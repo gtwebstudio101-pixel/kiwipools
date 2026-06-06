@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Kiwi Pools UK | Premium Swimming Pool Services in Kent</title>
+  <meta name="description" content="Kiwi Pools UK – Expert swimming pool servicing, refurbishment, equipment installation and automated dosing systems across Kent and the South East." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --blue-dark:  #0a4a7a;
+      --blue-mid:   #1171b8;
+      --blue:       #1a8fd1;
+      --blue-light: #e8f4fd;
+      --blue-pale:  #f0f8ff;
+      --teal:       #0dc7e0;
+      --teal2:      #0aafca;
+      --white:      #ffffff;
+      --off-white:  #f7fbff;
+      --text-dark:  #0d2e4a;
+      --text-mid:   #2c5f8a;
+      --text-light: #5a8aaa;
+      --gold:       #c8a96e;
+      --shadow:     0 4px 24px rgba(17,113,184,.12);
+      --shadow-lg:  0 12px 48px rgba(17,113,184,.18);
+      --font-main: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--text-dark);
+      font-family: var(--font-main);
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .hero-title, .section-title, .service-card h3, .step-body h4, .hours-block h4, .footer-col h5 { font-weight: 700; }
+    .hero-eyebrow, .section-tag, .stat-label, .pill, .btn-primary, .btn-outline, .nav-quote-btn, .nav-links a, .form-submit, .google-review-btn, .testimonial-author { font-weight: 600; }
+    .hero-sub, .service-card p, .step-body p, .review-text, .contact-detail-text span, .hours-row, .footer-brand p, .footer-col ul a { font-weight: 400; }
+/* ============================================================
+       NAVBAR
+       ============================================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: transparent; backdrop-filter: none;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5vw;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    nav.scrolled { background: var(--blue-dark); padding: 0.7rem 5vw; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+    /* Logo: keep original colors — do NOT apply invert filter */
+    nav.scrolled .nav-logo img { filter: none; }
+    nav.scrolled .nav-links a { color: rgba(255,255,255,0.85); }
+    nav.scrolled .nav-links a:hover { color: var(--teal); }
+    nav.scrolled .nav-links a::after { background: var(--teal); }
+    nav.scrolled .nav-icon-link { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.9); }
+    nav.scrolled .nav-icon-link:hover { background: var(--teal); border-color: var(--teal); color: #fff; }
+    nav.scrolled .nav-quote-btn { background: var(--teal); }
+    nav.scrolled .nav-quote-btn:hover { background: var(--teal2); }
+    nav.scrolled .nav-toggle span { background: white; }
+
+    .nav-logo img { height: 54px; transition: transform .3s; display: block; }
+    .nav-logo img:hover { transform: scale(1.04); }
+    .nav-center { display: flex; align-items: center; gap: 2.2rem; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: #ffffff; text-decoration: none; font-size: .72rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; position: relative;
+      transition: color .3s; text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background: var(--teal); transition: width .3s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links a:hover::after { width:100%; }
+
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .nav-icon-link {
+      width: 36px; height: 36px; border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      color: white; text-decoration: none; transition: all .3s;
+    }
+    .nav-icon-link:hover { background: var(--teal); border-color: var(--teal); color: #fff; transform: translateY(-2px); }
+    .nav-quote-btn {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal2) 100%);
+      color: #fff; padding: .55rem 1.4rem; font-family: var(--font-main); font-size: .68rem;
+      font-weight: 600; letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
+      border: none; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform .2s, box-shadow .3s;
+      border-radius: 60px; /* Rounded button */
+    }
+    .nav-quote-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: .4rem; }
+    .nav-toggle span { width: 24px; height: 2px; background: white; display: block; transition: transform .3s, opacity .3s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--blue-dark); z-index: 999; flex-direction: column;
+      align-items: center; justify-content: center; gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: white; text-decoration: none; font-size: 1.6rem; font-family: var(--font-main); font-weight: 600; transition: color .3s; }
+    .mobile-menu a:hover { color: var(--teal); }
+    .mobile-menu-close { position: absolute; top: 1.4rem; right: 5vw; background: none; border: none; font-size: 1.8rem; color: white; cursor: pointer; }
+
+    /* ============================================================
+       HERO (now includes integrated stats section - TRANSPARENT)
+       ============================================================ */
+    #hero {
+      position: relative; min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      overflow: hidden; margin-top: 0;
+    }
+    .hero-bg-img {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: -2; filter: brightness(0.85) contrast(1.02);
+    }
+    .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.25); z-index: -1; }
+    .hero-circle {
+      position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+    }
+    .hc-1 { width: 600px; height: 600px; top: -150px; right: -150px; background: radial-gradient(circle, rgba(255,255,255,.12) 0%, rgba(255,255,255,.05) 50%, transparent 70%); animation: floatC 14s ease-in-out infinite alternate; }
+    .hc-2 { width: 350px; height: 350px; bottom: -80px; left: -80px; background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 65%); animation: floatC 18s ease-in-out infinite alternate-reverse; }
+    .hc-3 { width: 200px; height: 200px; top: 30%; left: 10%; background: radial-gradient(circle, rgba(255,255,255,.1) 0%, transparent 65%); animation: floatC 10s ease-in-out infinite alternate; }
+    @keyframes floatC { 0%{transform:translate(0,0);} 100%{transform:translate(25px,-35px);} }
+    
+    .hero-content { position: relative; z-index: 5; text-align: center; padding: 0 2rem; max-width: 900px; margin-bottom: 2rem; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .8rem; font-size: .68rem; font-weight: 600;
+      letter-spacing: .25em; text-transform: uppercase; color: rgba(255,255,255,0.95);
+      background: rgba(0,0,0,0.3); padding: 0.3rem 1rem; border-radius: 40px;
+      backdrop-filter: blur(4px); margin-bottom: 1.6rem; opacity:0; transform:translateY(20px);
+    }
+    .hero-eyebrow span { width: 36px; height: 1.5px; background: var(--teal); display: block; }
+    .hero-title {
+      font-family: var(--font-main);
+      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #ffffff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      margin-bottom: 1rem;
+      opacity:0; 
+      transform:translateY(30px);
+      white-space: normal;
+      word-break: keep-all;
+    }
+    .hero-title .gold-em { font-style: italic; color: var(--teal); display: inline; }
+    .hero-actions { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; opacity:0; transform:translateY(20px); margin: 1.5rem 0 1rem; }
+    
+    /* ALL BUTTONS ROUNDED */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal2) 100%);
+      color: #fff; padding: 1rem 2.6rem; font-family: var(--font-main); font-size: .72rem;
+      font-weight: 600; letter-spacing: .13em; text-transform: uppercase; text-decoration: none;
+      border: none; box-shadow: 0 6px 24px rgba(0,0,0,0.3); position: relative; overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+      border-radius: 60px; /* Rounded button */
+    }
+    .btn-primary::before { content:''; position:absolute; inset:0; background: rgba(255,255,255,.18); transform: translateX(-110%) skewX(-15deg); transition: transform .45s; }
+    .btn-primary:hover::before { transform: translateX(110%) skewX(-15deg); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.4); }
+    
+    .btn-outline {
+      background: rgba(255,255,255,.85); border: 2px solid rgba(17,113,184,.4);
+      color: var(--blue-dark); padding: 1rem 2.6rem; font-family: var(--font-main);
+      font-size: .72rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
+      text-decoration: none; backdrop-filter: blur(8px); transition: all .3s;
+      border-radius: 60px; /* Rounded button */
+    }
+    .btn-outline:hover { background: white; border-color: var(--teal); transform: translateY(-3px); }
+    
+    .hero-footer-text {
+      margin-top: 0.8rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-weight: 400;
+    }
+    .hero-footer-text span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .hero-footer-text svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--teal);
+    }
+
+    /* INTEGRATED STATS SECTION - FULLY TRANSPARENT */
+    .hero-stats {
+      position: relative;
+      z-index: 5;
+      background: transparent;
+      width: 100%;
+      margin-top: 2rem;
+      padding: 1rem 1rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+    .stat-item { padding: 0.5rem; background: transparent; }
+    .stat-num { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; color: #fff; line-height: 1; margin-bottom: 0.3rem; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+    .stat-num .accent { color: var(--teal); }
+    .stat-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.9); font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+    .bayrol-logo-img { max-width: 70px; height: auto; filter: brightness(0) invert(1); margin-bottom: 0.3rem; transition: transform 0.3s ease; display: inline-block; }
+    .bayrol-logo-img:hover { transform: scale(1.05); }
+
+    .hero-wave-bottom {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      line-height: 0;
+      z-index: 2;
+    }
+    .hero-wave-bottom svg { display: block; width: 100%; }
+    
+    .scroll-indicator { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .5rem; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,0.9); z-index: 5; animation: fadeInUp 1s 2.5s both; font-weight: 500; }
+    @keyframes fadeInUp { from{opacity:0;transform:translate(-50%,10px);} to{opacity:1;transform:translate(-50%,0);} }
+    .scroll-line { width: 1px; height: 46px; background: linear-gradient(to bottom, var(--teal), rgba(255,255,255,0.3)); animation: scrollPulse 2s ease-in-out infinite; }
+    @keyframes scrollPulse { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+
+    /* Main content sections */
+    section { padding: 6rem 5vw; }
+    .section-tag { font-size: .65rem; letter-spacing: .25em; text-transform: uppercase; color: var(--blue); font-weight: 600; display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem; }
+    .section-tag::before { content:''; width: 28px; height: 2px; background: var(--blue); display: block; }
+    .section-title { font-family: var(--font-main); font-size: clamp(2rem, 4.5vw, 3.6rem); font-weight: 700; line-height: 1.1; color: var(--text-dark); margin-bottom: 1.2rem; }
+    .section-title em { font-style: italic; color: var(--blue); }
+    .section-body { font-size: .88rem; color: var(--text-light); line-height: 2; max-width: 560px; font-weight: 400; }
+
+    /* ABOUT */
+    #about-wrap { background: var(--off-white); }
+    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; max-width: 1280px; margin: 0 auto; }
+    .about-img-wrap { position: relative; }
+    .about-img-wrap img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; box-shadow: var(--shadow-lg); border-radius: 24px; }
+    .about-img-wrap::before { content:''; position:absolute; top: -14px; left: -14px; right: 14px; bottom: 14px; border: 2px solid rgba(17,113,184,.2); pointer-events: none; z-index: -1; transition: transform .5s; border-radius: 24px; }
+    .about-img-wrap:hover::before { transform: translate(5px,-5px); }
+    .about-badge { position: absolute; bottom: -1.8rem; right: -1.8rem; background: var(--blue-dark); padding: 1.2rem 1.8rem; text-align: center; box-shadow: var(--shadow); border-radius: 20px; }
+    .badge-num { font-family: var(--font-main); font-size: 2.4rem; font-weight: 700; color: var(--teal); display: block; line-height: 1; }
+    .badge-txt { font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.7); font-weight: 600; }
+    .about-text p { font-size: .88rem; color: var(--text-light); line-height: 2; margin-bottom: 1.2rem; font-weight: 400; }
+    .feature-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.8rem; }
+    .pill { padding: .45rem 1.1rem; border: 1.5px solid rgba(17,113,184,.2); font-size: .67rem; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-mid); background: rgba(17,113,184,.05); transition: background .3s, border-color .3s, color .3s; font-weight: 600; border-radius: 40px; }
+    .pill:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+    /* SERVICES */
+    #services { background: var(--blue-pale); }
+    .services-inner { max-width: 1280px; margin: 0 auto; }
+    .services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .service-card { background: var(--white); padding: 2.8rem 2.2rem; border: 1.5px solid rgba(17,113,184,.08); position: relative; overflow: hidden; box-shadow: 0 2px 16px rgba(17,113,184,.06); transition: transform .3s, box-shadow .3s, border-color .3s; border-radius: 28px; }
+    .service-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--blue), var(--teal)); transform: scaleX(0); transform-origin: left; transition: transform .4s; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(17,113,184,.2); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon-wrap { width: 54px; height: 54px; background: linear-gradient(135deg, var(--blue-light) 0%, rgba(13,199,224,.15) 100%); display: flex; align-items: center; justify-content: center; margin-bottom: 1.6rem; border-radius: 16px; }
+    .service-icon-wrap svg { color: var(--blue); }
+    .service-card h3 { font-family: var(--font-main); font-size: 1.45rem; font-weight: 700; color: var(--text-dark); margin-bottom: .8rem; }
+    .service-card p { font-size: .82rem; color: var(--text-light); line-height: 1.85; font-weight: 400; }
+    .service-num { position: absolute; top: 1.5rem; right: 2rem; font-family: var(--font-main); font-size: 3.5rem; font-weight: 700; color: rgba(17,113,184,.06); line-height: 1; pointer-events: none; transition: color .4s; }
+
+    /* PROCESS */
+    #process-wrap { background: var(--white); }
+    #process { max-width: 1280px; margin: 0 auto; }
+    .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; margin-top: 3.5rem; }
+    .comparison-slider {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/2;
+      border-radius: 28px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      cursor: col-resize;
+      user-select: none;
+    }
+    .comparison-slider .img-before,
+    .comparison-slider .img-after {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      display: block;
+    }
+    .comparison-slider .img-after { z-index: 1; }
+    .comparison-slider .img-before { z-index: 2; clip-path: inset(0 50% 0 0); }
+    .comparison-handle {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: #fff;
+      z-index: 10;
+      transform: translateX(-50%);
+      box-shadow: 0 0 12px rgba(0,0,0,0.35);
+    }
+    .comparison-handle::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+    .comparison-handle::after {
+      content: '◀ ▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 10px;
+      color: var(--blue-dark);
+      letter-spacing: 2px;
+      white-space: nowrap;
+      font-weight: 700;
+      z-index: 1;
+    }
+    .comparison-label {
+      position: absolute;
+      bottom: 1rem;
+      z-index: 15;
+      background: rgba(10,74,122,0.75);
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .3rem .8rem;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+    }
+    .comparison-label.label-before { left: 1rem; }
+    .comparison-label.label-after  { right: 1rem; }
+    .process-steps { display: flex; flex-direction: column; gap: 2.4rem; }
+    .step { display: flex; gap: 1.6rem; align-items: flex-start; opacity: 0; transform: translateX(-28px); }
+    .step-num { flex-shrink: 0; width: 44px; height: 44px; background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%); display: flex; align-items: center; justify-content: center; font-family: var(--font-main); font-size: 1.2rem; font-weight: 700; color: #fff; border-radius: 16px; }
+    .step-body h4 { font-family: var(--font-main); font-size: 1.2rem; font-weight: 700; margin-bottom: .4rem; }
+    .step-body p { font-size: .82rem; color: var(--text-light); line-height: 1.85; }
+
+    /* GALLERY, REVIEWS, TESTIMONIAL, CONTACT */
+    #gallery-teaser { background: var(--blue-pale); }
+    .gallery-inner { max-width: 1280px; margin: 0 auto; }
+    .gallery-header { text-align: center; margin-bottom: 3rem; }
+    .gallery-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .g-item { position: relative; overflow: hidden; aspect-ratio: 4/3; border-radius: 20px; }
+    .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .g-item:hover img { transform: scale(1.05); }
+    .g-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(10,74,122,.8) 100%); opacity: 0; transition: opacity .4s; display: flex; align-items: flex-end; padding: 1.4rem; border-radius: 20px; }
+    .g-item:hover .g-overlay { opacity: 1; }
+    .g-overlay span { font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; color: #fff; font-weight: 600; }
+    .gallery-cta { text-align: center; margin-top: 2.8rem; }
+
+    #reviews { background: var(--white); overflow: hidden; }
+    .reviews-inner { max-width: 1280px; margin: 0 auto; }
+    .reviews-header { text-align: center; margin-bottom: 2.5rem; }
+    .google-badge { display: inline-flex; align-items: center; gap: .8rem; background: var(--blue-light); border: 1.5px solid rgba(17,113,184,.15); padding: .7rem 1.4rem; margin-bottom: 1.2rem; border-radius: 60px; }
+    .overall-rating { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: .5rem; }
+    .overall-score { font-family: var(--font-main); font-size: 3.2rem; font-weight: 700; color: var(--text-dark); line-height: 1; }
+    .stars-row { display: flex; gap: 3px; margin-bottom: .3rem; }
+    .star { color: #f9a825; font-size: 1.1rem; }
+    .reviews-scroll-container { position: relative; width: 100%; overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; scrollbar-width: none; cursor: grab; padding: 0.5rem 0 1.5rem 0; }
+    .reviews-scroll-container::-webkit-scrollbar { display: none; }
+    .reviews-horizontal { display: flex; gap: 2rem; padding: 0.5rem 2rem; width: max-content; }
+    .review-card { width: 360px; flex-shrink: 0; background: var(--blue-pale); border: 1.5px solid rgba(17,113,184,.1); padding: 2rem 1.8rem; border-radius: 28px; transition: transform 0.3s, box-shadow 0.3s; }
+    .review-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .review-stars { display: flex; gap: 4px; margin-bottom: 1.2rem; }
+    .review-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 1.3rem; }
+    .review-author { display: flex; align-items: center; gap: 0.9rem; }
+    .review-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; color: #fff; }
+    .review-name { font-size: 0.85rem; font-weight: 700; color: var(--text-dark); }
+    .review-date { font-size: 0.7rem; color: var(--text-light); margin-top: 0.2rem; }
+    .reviews-dots { display: flex; justify-content: center; gap: 0.8rem; margin-top: 2rem; margin-bottom: 1.5rem; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(17,113,184,0.3); cursor: pointer; transition: all 0.3s ease; }
+    .dot.active { background: var(--blue); width: 28px; border-radius: 20px; }
+    
+    /* Google Review Buttons - Rounded */
+    .google-cta { display: flex; align-items: center; justify-content: center; gap: 1.2rem; margin-top: 1rem; flex-wrap: wrap; }
+    .google-review-btn {
+      display: inline-flex; align-items: center; gap: .7rem; background: var(--white);
+      border: 2px solid rgba(17,113,184,.25); padding: 0.8rem 1.8rem;
+      font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--blue-mid); text-decoration: none; transition: all 0.3s;
+      border-radius: 60px; /* Rounded button */
+    }
+    .google-review-btn:hover { background: var(--blue-light); border-color: var(--blue); transform: translateY(-2px); }
+
+    #testimonial { background: linear-gradient(135deg, var(--blue-dark) 0%, #0a3a6e 100%); text-align: center; padding: 5rem 5vw; }
+    .quote-mark { font-size: 7rem; font-weight: 700; color: rgba(255,255,255,.12); line-height: 1; margin-bottom: -2rem; display: block; }
+    .testimonial-text { font-size: clamp(1.4rem, 3vw, 2rem); font-style: italic; color: #fff; max-width: 780px; margin: 0 auto 1.8rem; line-height: 1.5; }
+    .testimonial-author { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
+
+    #contact { background: var(--off-white); }
+    .contact-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+    .contact-icon { width: 44px; height: 44px; background: linear-gradient(135deg, var(--blue) 0%, var(--teal2) 100%); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #fff; font-size: 1.2rem; }
+    .contact-detail-text strong { font-size: .9rem; color: var(--text-dark); display: block; }
+    .hours-block { margin-top: 2rem; padding: 1.5rem; background: var(--blue-light); border-radius: 24px; }
+    .hours-row { display: flex; justify-content: space-between; font-size: .8rem; padding: .4rem 0; border-bottom: 1px solid rgba(17,113,184,.1); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(17,113,184,.2); border-radius: 16px; background: white; font-size: .85rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
+      color: white; border: none; padding: 1rem 2rem; font-weight: 600;
+      cursor: pointer; width: fit-content; transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 60px; /* Rounded button */
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+    footer { background: var(--blue-dark); padding: 3rem 5vw 2rem; margin-top: 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; max-width: 1280px; margin: 0 auto; }
+    .footer-brand img { height: 44px; filter: brightness(0) invert(1); margin-bottom: 1rem; }
+    .footer-brand p { font-size: .8rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .footer-col h5 { color: var(--teal); font-size: 0.7rem; margin-bottom: 1rem; letter-spacing: 1px; }
+    .footer-col ul { list-style: none; }
+    .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.8rem; transition: 0.2s; }
+    .footer-social { display: flex; gap: 0.8rem; margin-top: 1rem; }
+    .social-link { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: 0.2s; }
+    .social-link:hover { background: var(--teal); border-color: var(--teal); transform: translateY(-2px); }
+    .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem; color: rgba(255,255,255,0.5); font-size: 0.7rem; }
+
+    .section-wave {
+      position: relative;
+      margin-bottom: -2px;
+      line-height: 0;
+      overflow: hidden;
+    }
+    .section-wave svg { display: block; width: 100%; }
+    @keyframes waveA {
+      0%   { d: path("M0,35 C200,65 480,5  720,35 C960,65 1240,5  1440,35 L1440,80 L0,80 Z"); }
+      50%  { d: path("M0,55 C200,15 480,70 720,45 C960,15 1240,65 1440,25 L1440,80 L0,80 Z"); }
+      100% { d: path("M0,35 C200,65 480,5  720,35 C960,65 1240,5  1440,35 L1440,80 L0,80 Z"); }
+    }
+    @keyframes waveB {
+      0%   { d: path("M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z"); }
+      50%  { d: path("M0,30 C300,65 700,15 1000,55 C1200,70 1360,25 1440,55 L1440,80 L0,80 Z"); }
+      100% { d: path("M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z"); }
+    }
+    .wa  { animation: waveA 7s ease-in-out infinite; }
+    .wb  { animation: waveB 9s ease-in-out infinite; opacity: .55; }
+    .reveal-up { opacity:0; transform:translateY(45px); }
+    .reveal-left { opacity:0; transform:translateX(-45px); }
+    .reveal-right { opacity:0; transform:translateX(45px); }
+
+    @media (max-width: 1024px) {
+      #about, .process-grid, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .gallery-strip { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 768px) {
+      .nav-center { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-quote-btn { display: none; }
+      .services-grid, .gallery-strip, .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .review-card { width: 300px; padding: 1.5rem; }
+      .hero-stats { padding: 0.5rem; margin-top: 1rem; }
+      .stats-grid { gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo"><img src="img/main_logo_img.png" alt="Kiwi Pools UK Ltd Logo" /></a>
+    <div class="nav-center">
+      <ul class="nav-links">
+        <li><a href="#about-wrap">About</a></li><li><a href="#services">Services</a></li>
+        <li><a href="#process-wrap">Our Process</a></li><li><a href="#reviews">Reviews</a></li>
+        <li><a href="gallery.html">Gallery</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <a href="https://www.facebook.com/KiwiPoolsUK" class="nav-icon-link" target="_blank"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      <a href="https://www.instagram.com/kiwipoolsuk" class="nav-icon-link" target="_blank"><svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+      <a href="tel:07831685649" class="nav-icon-link"><svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></a>
+      <a href="#contact" class="nav-quote-btn">Free Quote</a>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu"><button class="mobile-menu-close" id="mobileClose">✕</button>
+    <a href="#about-wrap">About</a><a href="#services">Services</a><a href="#process-wrap">Our Process</a><a href="#reviews">Reviews</a><a href="gallery.html">Gallery</a><a href="#contact">Get a Quote</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <img class="hero-bg-img" src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/140a60f2272bbfd9f729c4a24dab51ed620f0224/kiwipools/img/main%20hero%20bg%20img.jpeg?raw=true" alt="Luxury swimming pool" />
+    <div class="hero-overlay"></div>
+    <div class="hero-circle hc-1"></div><div class="hero-circle hc-2"></div><div class="hero-circle hc-3"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span></span>Premium Pool Services · Kent &amp; South East UK<span></span></div>
+      <h1 class="hero-title">Your Pool, <span class="gold-em">Perfectly Crafted.</span></h1>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Get a Free Quote</a>
+        <a href="#services" class="btn-outline">Explore Services</a>
+      </div>
+      <div class="hero-footer-text">
+        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 24/7 Emergency Support</span>
+        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12H4M12 4v16"/></svg> Certified Bayrol Specialists</span>
+        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 100% Satisfaction Guaranteed</span>
+      </div>
+    </div>
+
+    <!-- Integrated Stats Section - Fully Transparent -->
+    <div class="hero-stats reveal-up" id="heroStats">
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num"><span class="accent">15</span>+</div><div class="stat-label">Years Experience</div></div>
+        <div class="stat-item"><div class="stat-num"><span class="accent">500</span>+</div><div class="stat-label">Pools Serviced</div></div>
+        <div class="stat-item"><div class="stat-num"><span class="accent">100</span>%</div><div class="stat-label">Client Satisfaction</div></div>
+        <div class="stat-item"><img class="bayrol-logo-img" src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/734e699fb1ea026a4c373ce4fc4fa7bfacc04c4e/kiwipools/img/Bayrol_Logo-removebg-preview.png?raw=true" alt="Bayrol Certified" /><div class="stat-label">Certified Specialists</div></div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator"><div class="scroll-line"></div>Scroll</div>
+    <div class="hero-wave-bottom">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--off-white)"/>
+        <path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--off-white)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about-wrap"><div id="about"><div class="about-img-wrap reveal-left"><img src="img/landing page img/Our Vision.webp" alt="Our Vision" /><div class="about-badge"><span class="badge-num">15+</span><span class="badge-txt">Years of Excellence</span></div></div><div class="about-text reveal-right"><div class="section-tag">Our Vision</div><h2 class="section-title">Redefining What<br><em>Pool Care</em> Means</h2><p>At Kiwi Pools UK, our vision is to set the standard for modern, dependable, and high-quality pool care. We combine cutting-edge water testing technology with decades of hands-on expertise to deliver pools that are cleaner, safer, and more efficient.</p><p>Through skilled refurbishment, smart equipment upgrades, and advanced automated dosing systems, we create pools that are effortless to own and a joy to use — year after year.</p><div class="feature-pills"><div class="pill">Digital Water Testing</div><div class="pill">Liner Installation</div><div class="pill">Bayrol Certified</div><div class="pill">Smart Dosing</div><div class="pill">Pump &amp; Heater Install</div></div></div></div></section>
+
+  <!-- wave: off-white → blue-pale -->
+  <div class="section-wave" style="background:var(--off-white);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--blue-pale)"/><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--blue-pale)"/></svg></div>
+  
+  <!-- SERVICES SECTION -->
+  <section id="services"><div class="services-inner"><div class="services-header"><div class="reveal-left"><div class="section-tag">What We Offer</div><h2 class="section-title">Complete Pool<br><em>Services</em></h2></div><div class="reveal-right"><p class="section-body">From routine maintenance to complete overhauls — we deliver precision, reliability, and craftsmanship across every aspect of pool care.</p></div></div><div class="services-grid"><div class="service-card reveal-up"><div class="service-num">01</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Pool Servicing</h3><p>State-of-the-art digital water testing and comprehensive maintenance visits to keep your pool crystal clear and perfectly balanced.</p></div><div class="service-card reveal-up"><div class="service-num">02</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Refurbishment</h3><p>Complete onsite liner installations plus a full range of safety, slatted and solar covers to restore your pool to showroom condition.</p></div><div class="service-card reveal-up"><div class="service-num">03</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4"/></svg></div><h3>Heater &amp; Pump Install</h3><p>Expert installation and replacement of pumps, heaters and filtration equipment to improve efficiency and eliminate recurring issues.</p></div><div class="service-card reveal-up"><div class="service-num">04</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Automated Dosing</h3><p>As certified Bayrol specialists, we install advanced chlorine and salt dosing systems for effortless, precise water treatment.</p></div><div class="service-card reveal-up"><div class="service-num">05</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Safety Covers</h3><p>Full selection of high-quality safety, slatted and solar covers to enhance appearance, functionality and safety.</p></div><div class="service-card reveal-up"><div class="service-num">06</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2"/></svg></div><h3>Tailored Service Plans</h3><p>Personalised maintenance schedules designed around your pool's unique requirements, goals and seasonal demands.</p></div></div></div></section>
+
+  <!-- wave: blue-pale → white -->
+  <div class="section-wave" style="background:var(--blue-pale);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--white)"/><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--white)"/></svg></div>
+  
+  <!-- PROCESS SECTION -->
+  <section id="process-wrap"><div id="process"><div class="reveal-up" style="text-align:center"><div class="section-tag" style="justify-content:center;">How It Works</div><h2 class="section-title">Our <em>Process</em></h2></div><div class="process-grid"><div class="process-img reveal-left"><div class="comparison-slider" id="compSlider"><img class="img-before" src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/94ec5515f5b87f47a90fbcde7990fe39eb364849/kiwipools/img/landing%20page%20img/tran%20green%20.jpeg?raw=true" alt="Before" /><img class="img-after" src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/94ec5515f5b87f47a90fbcde7990fe39eb364849/kiwipools/img/landing%20page%20img/tran%20blue%20org.jpg?raw=true" alt="After" /><div class="comparison-handle" id="compHandle"></div><span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span></div></div><div class="process-steps"><div class="step"><div class="step-num">01</div><div class="step-body"><h4>Personal Site Visit</h4><p>Hands-on assessment of your pool's condition and understanding your goals.</p></div></div><div class="step"><div class="step-num">02</div><div class="step-body"><h4>Tailored Service Plan</h4><p>We design a plan for routine servicing, refurbishment or equipment upgrades.</p></div></div><div class="step"><div class="step-num">03</div><div class="step-body"><h4>Expert Delivery</h4><p>Precision work using top-quality equipment and materials.</p></div></div><div class="step"><div class="step-num">04</div><div class="step-body"><h4>Ongoing Support</h4><p>Transparent communication and follow-up care year-round.</p></div></div></div></div></div></section>
+
+  <!-- REMAINING SECTIONS (Gallery, Reviews, Testimonial, Contact, Footer) -->
+  <div class="section-wave" style="background:var(--white);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--blue-pale)"/><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--blue-pale)"/></svg></div>
+  <section id="gallery-teaser"><div class="gallery-inner"><div class="gallery-header"><div class="section-tag" style="justify-content:center;">Recent Work</div><h2 class="section-title">A Fraction of <em>What We've Done</em></h2></div><div class="gallery-strip"><div class="g-item"><img src="img/landing page img/S1.webp" alt="Pool" /><div class="g-overlay"><span>View Project →</span></div></div><div class="g-item"><img src="img/landing page img/s2.webp" alt="Pool" /><div class="g-overlay"><span>View Project →</span></div></div><div class="g-item"><img src="img/landing page img/s3.webp" alt="Pool" /><div class="g-overlay"><span>View Project →</span></div></div><div class="g-item"><img src="img/landing page img/s4.webp" alt="Pool" /><div class="g-overlay"><span>View Project →</span></div></div><div class="g-item"><img src="img/landing page img/s5.webp" alt="Pool" /><div class="g-overlay"><span>View Project →</span></div></div><div class="g-item"><img src="img/landing page img/s6.webp" alt="Pool" /><div class="g-overlay"><span>View Project →</span></div></div></div><div class="gallery-cta"><a href="gallery.html" class="btn-outline">View Full Gallery</a></div></div></section>
+  <div class="section-wave" style="background:var(--blue-pale);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--white)"/><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--white)"/></svg></div>
+  <section id="reviews"><div class="reviews-inner"><div class="reviews-header reveal-up"><div class="google-badge"><svg class="g-logo" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg><span class="g-text">Google Reviews</span></div><div class="overall-rating"><span class="overall-score">5.0</span><div class="rating-detail"><div class="stars-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="rating-count">Based on 48 Google Reviews</div></div></div></div><div class="reviews-scroll-container" id="scrollContainer"><div class="reviews-horizontal" id="reviewsHorizontal"><div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"Cam is absolutely fantastic. Our pool has never looked better — always on time, incredibly professional."</p><div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">Sarah M.</div><div class="review-date">Sevenoaks, Kent</div></div></div></div><div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"Brilliant service from start to finish. Cam fitted a new liner and automated dosing system — the difference is night and day."</p><div class="review-author"><div class="review-avatar">J</div><div><div class="review-name">James T.</div><div class="review-date">Tunbridge Wells</div></div></div></div><div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"I've used Kiwi Pools for 3 years now and wouldn't use anyone else. The pool is always immaculate."</p><div class="review-author"><div class="review-avatar">R</div><div><div class="review-name">Rachel H.</div><div class="review-date">Maidstone</div></div></div></div></div></div><div class="reviews-dots" id="reviewsDots"></div><div class="google-cta reveal-up"><a href="#" class="google-review-btn"><svg width="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Read All Reviews</a><a href="#" class="btn-primary" style="display:inline-flex;align-items:center;gap:.6rem;">Leave a Review</a></div></div></section>
+  <div class="section-wave" style="background:var(--white);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--blue-dark)"/><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--blue-dark)"/></svg></div>
+  <section id="testimonial"><div><span class="quote-mark">"</span><p class="testimonial-text">Cam and the team at Kiwi Pools are simply outstanding. Our pool has never looked better — efficient, crystal clear, and beautifully maintained. Truly the best in Kent.</p><p class="testimonial-author">— Satisfied Customer, Sevenoaks, Kent</p></div></section>
+  <div class="section-wave" style="background:var(--blue-dark);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--off-white)"/><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--off-white)"/></svg></div>
+  <section id="contact"><div class="contact-inner"><div class="contact-info"><div class="section-tag">Get In Touch</div><h2 class="section-title">Let's Talk<br><em>About Your Pool</em></h2><p>Send us a message or call for a free, no-obligation quote. Tell us about your pool and what you need, and we'll tailor a solution to fit.</p><div class="contact-detail"><div class="contact-icon">📞</div><div class="contact-detail-text"><strong>07831 685 649</strong><span>Call or text anytime</span></div></div><div class="contact-detail"><div class="contact-icon">✉️</div><div class="contact-detail-text"><strong>info@kiwipools.co.uk</strong><span>We respond within 24 hours</span></div></div><div class="contact-detail"><div class="contact-icon">📍</div><div class="contact-detail-text"><strong>Kent &amp; South East, UK</strong><span>Serving the wider region</span></div></div><div class="hours-block"><h4>Opening Hours</h4><div class="hours-row active"><span>Monday – Friday</span><span>9am – 5pm</span></div><div class="hours-row"><span>Saturday</span><span>By Appointment</span></div><div class="hours-row"><span>Sunday</span><span>Closed</span></div></div></div><div><form class="contact-form" onsubmit="handleSubmit(event)"><div class="form-row"><div class="form-group"><label>Full Name *</label><input type="text" placeholder="John Smith" required /></div><div class="form-group"><label>Phone *</label><input type="tel" placeholder="07700 000 000" required /></div></div><div class="form-group"><label>Email Address *</label><input type="email" placeholder="john@example.com" required /></div><div class="form-group"><label>Postcode *</label><input type="text" placeholder="e.g. TN1 2AB" required /></div><div class="form-group"><label>Service Required</label><select><option>Pool Servicing</option><option>Refurbishment</option><option>Heater / Pump Installation</option><option>Automated Dosing System</option><option>Safety Cover</option><option>General Enquiry</option></select></div><div class="form-group"><label>Message</label><textarea rows="3" placeholder="Tell us about your pool and what you need..."></textarea></div><button type="submit" class="form-submit">Send Enquiry →</button></form></div></div></section>
+  <footer><div class="footer-grid"><div class="footer-brand"><img src="img/main_logo_img.png" alt="Kiwi Pools UK Ltd" /><p>Setting the standard for modern, dependable pool care across Kent and the South East. Expert craftsmanship, every step of the way.</p><div class="footer-social"><a href="#" class="social-link">f</a><a href="#" class="social-link">ig</a></div></div><div class="footer-col"><h5>Services</h5><ul><li><a href="#services">Pool Servicing</a></li><li><a href="#services">Refurbishment</a></li><li><a href="#services">Heater &amp; Pump Install</a></li><li><a href="#services">Automated Dosing</a></li><li><a href="#services">Safety Covers</a></li></ul></div><div class="footer-col"><h5>Company</h5><ul><li><a href="#about-wrap">About Us</a></li><li><a href="#process-wrap">Our Process</a></li><li><a href="#reviews">Reviews</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="#contact">Contact</a></li></ul></div><div class="footer-col"><h5>Contact</h5><ul><li><a href="tel:07831685649">07831 685 649</a></li><li><a href="mailto:info@kiwipools.co.uk">info@kiwipools.co.uk</a></li><li><a href="#">Kent &amp; South East, UK</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 Kiwi Pools UK Ltd. All rights reserved.</p><a href="#">Privacy Policy</a></div></footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+    const toggle = document.getElementById('navToggle'), mobileMenu = document.getElementById('mobileMenu'), closeBtn = document.getElementById('mobileClose');
+    toggle?.addEventListener('click', () => { toggle.classList.toggle('open'); mobileMenu.classList.toggle('open'); document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : ''; });
+    closeBtn?.addEventListener('click', () => { toggle.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; });
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.timeline().to('.hero-eyebrow', { opacity:1, y:0, duration:.9 }, .3).to('.hero-title', { opacity:1, y:0, duration:1 }, .5).to('.hero-actions', { opacity:1, y:0, duration:.8 }, .95).to('.hero-footer-text', { opacity:1, y:0, duration:.7 }, 1.1);
+    gsap.to('#heroStats', { opacity:1, y:0, duration:1, delay:1.2 });
+    gsap.utils.toArray('.reveal-up').forEach(el => gsap.to(el, { opacity:1, y:0, duration:.9, scrollTrigger:{ trigger:el, start:'top 88%' } }));
+    gsap.utils.toArray('.reveal-left').forEach(el => gsap.to(el, { opacity:1, x:0, duration:1, scrollTrigger:{ trigger:el, start:'top 85%' } }));
+    gsap.utils.toArray('.reveal-right').forEach(el => gsap.to(el, { opacity:1, x:0, duration:1, scrollTrigger:{ trigger:el, start:'top 85%' } }));
+    gsap.utils.toArray('.step').forEach((step,i) => gsap.to(step, { opacity:1, x:0, duration:.75, delay:i*.12, scrollTrigger:{ trigger:'.process-steps', start:'top 80%' } }));
+    const scrollContainer = document.getElementById('scrollContainer');
+    const reviewsHorizontal = document.getElementById('reviewsHorizontal');
+    const dotsContainer = document.getElementById('reviewsDots');
+    let cards = [];
+    function initDots() { if (!reviewsHorizontal) return; cards = Array.from(reviewsHorizontal.querySelectorAll('.review-card')); const cardCount = cards.length; dotsContainer.innerHTML = ''; for (let i = 0; i < cardCount; i++) { const dot = document.createElement('div'); dot.classList.add('dot'); if (i === 0) dot.classList.add('active'); dot.addEventListener('click', () => { const cardWidth = cards[0].offsetWidth + 32; scrollContainer.scrollTo({ left: i * cardWidth, behavior: 'smooth' }); updateActiveDot(i); }); dotsContainer.appendChild(dot); } }
+    function updateActiveDot(index) { const dots = document.querySelectorAll('.dot'); dots.forEach((dot, i) => { if (i === index) dot.classList.add('active'); else dot.classList.remove('active'); }); }
+    function handleScroll() { if (!scrollContainer || cards.length === 0) return; const containerLeft = scrollContainer.scrollLeft; const cardWidth = cards[0].offsetWidth + 32; const activeIndex = Math.round(containerLeft / cardWidth); updateActiveDot(activeIndex); }
+    if (scrollContainer) { initDots(); scrollContainer.addEventListener('scroll', handleScroll); window.addEventListener('resize', () => { initDots(); handleScroll(); }); }
+    let isDown = false, startX, scrollLeftVar;
+    if (scrollContainer) {
+      scrollContainer.addEventListener('mousedown', (e) => { isDown = true; scrollContainer.style.cursor = 'grabbing'; startX = e.pageX - scrollContainer.offsetLeft; scrollLeftVar = scrollContainer.scrollLeft; });
+      scrollContainer.addEventListener('mouseleave', () => { isDown = false; scrollContainer.style.cursor = 'grab'; });
+      scrollContainer.addEventListener('mouseup', () => { isDown = false; scrollContainer.style.cursor = 'grab'; });
+      scrollContainer.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - scrollContainer.offsetLeft; const walk = (x - startX) * 1.5; scrollContainer.scrollLeft = scrollLeftVar - walk; });
+      scrollContainer.style.cursor = 'grab';
+    }
+    (function() { const slider = document.getElementById('compSlider'); const handle = document.getElementById('compHandle'); const imgBefore = slider.querySelector('.img-before'); if (!slider) return; let dragging = false; function setPosition(x) { const rect = slider.getBoundingClientRect(); let pct = (x - rect.left) / rect.width; pct = Math.min(Math.max(pct, 0.02), 0.98); handle.style.left = (pct * 100).toFixed(2) + '%'; imgBefore.style.clipPath = 'inset(0 ' + ((1 - pct) * 100).toFixed(2) + '% 0 0)'; } setPosition(slider.getBoundingClientRect().left + slider.offsetWidth * 0.5); slider.addEventListener('mousedown', e => { dragging = true; setPosition(e.clientX); e.preventDefault(); }); window.addEventListener('mousemove', e => { if (dragging) setPosition(e.clientX); }); window.addEventListener('mouseup', () => { dragging = false; }); slider.addEventListener('touchstart', e => { dragging = true; setPosition(e.touches[0].clientX); }, { passive: true }); window.addEventListener('touchmove', e => { if (dragging) setPosition(e.touches[0].clientX); }, { passive: true }); window.addEventListener('touchend', () => { dragging = false; }); })();
+    function handleSubmit(e) { e.preventDefault(); const btn = e.target.querySelector('.form-submit'); btn.textContent = "Sent! We'll be in touch ✓"; btn.style.background = '#2ecc71'; setTimeout(() => { btn.textContent = 'Send Enquiry →'; btn.style.background = ''; e.target.reset(); }, 4000); }
+  </script>
+</body>
+</html>
