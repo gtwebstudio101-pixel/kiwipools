@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Gallery | Kiwi Pools UK – Our Work in Kent</title>
+  <meta name="description" content="Browse our gallery of completed swimming pool projects across Kent and the South East. Servicing, refurbishment, liners, covers and more." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --blue-dark:  #0a4a7a;
+      --blue-mid:   #1171b8;
+      --blue:       #1a8fd1;
+      --blue-light: #e8f4fd;
+      --blue-pale:  #f0f8ff;
+      --teal:       #0dc7e0;
+      --teal2:      #0aafca;
+      --white:      #ffffff;
+      --off-white:  #f7fbff;
+      --text-dark:  #0d2e4a;
+      --text-mid:   #2c5f8a;
+      --text-light: #5a8aaa;
+      --shadow:     0 4px 24px rgba(17,113,184,.12);
+      --shadow-lg:  0 12px 48px rgba(17,113,184,.18);
+      --font-main:  'Plus Jakarta Sans', sans-serif;
+    }
+
+    html { scroll-behavior:smooth; overflow-x:hidden; }
+    body {
+      font-family:var(--font-main);
+      color:var(--text-dark);
+      background:var(--white);
+      overflow-x:hidden;
+      max-width:100vw;
+    }
+    body > * { overflow-x:hidden; max-width:100vw; }
+
+    /* ─── NAVBAR (exact match to index) ─── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1.2rem 5vw;
+      transition:all 0.35s cubic-bezier(0.2,0.9,0.4,1.1);
+      background:var(--blue-dark);
+    }
+    nav.scrolled { padding:0.7rem 5vw; box-shadow:0 4px 20px rgba(0,0,0,.2); }
+    .nav-logo img { height:54px; display:block; transition:transform .3s; }
+    .nav-logo img:hover { transform:scale(1.04); }
+    .nav-center { display:flex; align-items:center; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a {
+      color:rgba(255,255,255,.85); text-decoration:none; font-size:.72rem; font-weight:600;
+      letter-spacing:.12em; text-transform:uppercase; position:relative; transition:color .3s;
+    }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:var(--teal); transition:width .3s; }
+    .nav-links a:hover,
+    .nav-links a.active { color:var(--teal); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width:100%; }
+    .nav-right { display:flex; align-items:center; gap:1rem; }
+    .nav-icon-link {
+      width:36px; height:36px; border:1.5px solid rgba(255,255,255,.4);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      color:white; text-decoration:none; transition:all .3s;
+    }
+    .nav-icon-link:hover { background:var(--teal); border-color:var(--teal); transform:translateY(-2px); }
+    .nav-quote-btn {
+      background:linear-gradient(135deg,var(--teal) 0%,var(--teal2) 100%);
+      color:#fff; padding:.55rem 1.4rem; font-size:.68rem; font-weight:600;
+      letter-spacing:.12em; text-transform:uppercase; text-decoration:none;
+      border:none; border-radius:60px; box-shadow:0 4px 16px rgba(0,0,0,.2);
+      transition:transform .2s, box-shadow .3s;
+    }
+    .nav-quote-btn:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,.3); }
+    .nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:.4rem; z-index:1100; position:relative; }
+    .nav-toggle span { width:24px; height:2px; background:white; display:block; transition:transform .3s, opacity .3s; }
+    .nav-toggle.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity:0; }
+    .nav-toggle.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      position:fixed; top:0; right:0; bottom:0;
+      width:70vw; max-width:320px; background:var(--blue-dark);
+      z-index:1050; display:flex; flex-direction:column;
+      padding:5rem 2rem 2rem; gap:0;
+      transform:translateX(100%);
+      transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      box-shadow:-8px 0 40px rgba(0,0,0,.4);
+      overflow-y:auto;
+    }
+    .mobile-menu.open { transform:translateX(0); }
+    .mobile-menu-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,.5);
+      z-index:1040; opacity:0; pointer-events:none; transition:opacity 0.35s;
+    }
+    .mobile-menu-overlay.open { opacity:1; pointer-events:all; }
+    .mobile-menu a {
+      color:rgba(255,255,255,.85); text-decoration:none;
+      font-size:1rem; font-weight:600; padding:1rem 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      transition:color .2s, padding-left .2s; display:block;
+    }
+    .mobile-menu a:hover { color:var(--teal); padding-left:.4rem; }
+    .mobile-menu a:last-child { border-bottom:none; }
+    .mobile-menu-cta {
+      margin-top:1.5rem; padding:1rem; text-align:center;
+      background:linear-gradient(135deg,var(--teal) 0%,var(--teal2) 100%);
+      color:#fff; font-weight:700; font-size:.9rem; letter-spacing:.08em;
+      text-transform:uppercase; border-radius:60px; text-decoration:none; display:block;
+    }
+    .mobile-menu-close {
+      position:absolute; top:1.2rem; right:1.2rem;
+      background:rgba(255,255,255,.1); border:none; border-radius:50%;
+      width:36px; height:36px; color:white; font-size:1.1rem;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:background .2s;
+    }
+    .mobile-menu-close:hover { background:rgba(255,255,255,.2); }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      position:relative;
+      padding:9rem 5vw 7rem;
+      background:linear-gradient(160deg, var(--blue-dark) 0%, #0d3e6e 50%, #0a4a7a 100%);
+      overflow:hidden;
+      text-align:center;
+    }
+    .page-hero::before {
+      content:'';
+      position:absolute; inset:0;
+      background:url('https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g1.webp') center/cover no-repeat;
+      opacity:.13; z-index:0;
+    }
+    .page-hero-inner { position:relative; z-index:2; max-width:700px; margin:0 auto; }
+    .page-hero-tag {
+      display:inline-flex; align-items:center; gap:.7rem;
+      font-size:.66rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--teal); margin-bottom:1.4rem;
+    }
+    .page-hero-tag::before,
+    .page-hero-tag::after { content:''; width:28px; height:1.5px; background:var(--teal); display:block; flex-shrink:0; }
+    .page-hero-title {
+      font-size:clamp(2.4rem,6vw,4.2rem); font-weight:700; line-height:1.15;
+      color:#fff; margin-bottom:1.2rem;
+    }
+    .page-hero-title span { color:var(--teal); font-style:italic; }
+    .page-hero-sub {
+      font-size:.9rem; color:rgba(255,255,255,.7); line-height:1.8;
+      max-width:520px; margin:0 auto 2.2rem;
+    }
+
+    /* ─── WAVE ANIMATIONS (same as index.html) ─── */
+    .hero-wave-bottom {
+      position:absolute; bottom:-1px; left:0; right:0;
+      line-height:0; z-index:2; width:100%; overflow:hidden;
+      pointer-events:none;
+    }
+    .hero-wave-bottom svg { display:block; width:100%; height:110px; }
+
+    @keyframes waveA {
+      0%   { d:path("M0,35 C200,65 480,5  720,35 C960,65 1240,5  1440,35 L1440,80 L0,80 Z"); }
+      50%  { d:path("M0,55 C200,15 480,70 720,45 C960,15 1240,65 1440,25 L1440,80 L0,80 Z"); }
+      100% { d:path("M0,35 C200,65 480,5  720,35 C960,65 1240,5  1440,35 L1440,80 L0,80 Z"); }
+    }
+    @keyframes waveB {
+      0%   { d:path("M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z"); }
+      50%  { d:path("M0,30 C300,65 700,15 1000,55 C1200,70 1360,25 1440,55 L1440,80 L0,80 Z"); }
+      100% { d:path("M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z"); }
+    }
+    .wa { animation:waveA 7s ease-in-out infinite; }
+    .wb { animation:waveB 9s ease-in-out infinite; opacity:.55; }
+
+    /* Section wave divider */
+    .section-wave {
+      position:relative; margin-bottom:-2px;
+      line-height:0; overflow:hidden; width:100%;
+    }
+    .section-wave svg { display:block; width:100%; }
+
+    /* Floating water lines in hero bg (like index) */
+    .hero-water-lines {
+      position:absolute; inset:0; pointer-events:none; z-index:1;
+    }
+    .hero-water-lines svg { width:100%; height:100%; opacity:.18; }
+
+    /* Hero circles from index */
+    .hero-circle { position:absolute; border-radius:50%; pointer-events:none; z-index:1; }
+    .hc-1 { width:600px; height:600px; top:-150px; right:-150px; background:radial-gradient(circle,rgba(255,255,255,.12) 0%,rgba(255,255,255,.05) 50%,transparent 70%); animation:floatC 14s ease-in-out infinite alternate; }
+    .hc-2 { width:350px; height:350px; bottom:-80px; left:-80px; background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 65%); animation:floatC 18s ease-in-out infinite alternate-reverse; }
+    .hc-3 { width:200px; height:200px; top:30%; left:10%; background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 65%); animation:floatC 10s ease-in-out infinite alternate; }
+    @keyframes floatC { 0%{transform:translate(0,0);} 100%{transform:translate(25px,-35px);} }
+
+    /* ─── FILTER BAR ─── */
+    .filter-bar {
+      background:var(--white); border-bottom:1px solid rgba(17,113,184,.1);
+      padding:1.2rem 5vw; position:sticky; top:72px; z-index:100;
+      display:flex; align-items:center; justify-content:center; gap:.7rem;
+      flex-wrap:wrap; box-shadow:0 2px 12px rgba(17,113,184,.06);
+    }
+    .filter-btn {
+      padding:.5rem 1.4rem; border-radius:60px;
+      border:1.5px solid rgba(17,113,184,.2);
+      background:transparent; font-family:var(--font-main);
+      font-size:.68rem; font-weight:600; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--text-mid);
+      cursor:pointer; transition:all .25s;
+    }
+    .filter-btn:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-light); }
+    .filter-btn.active {
+      background:linear-gradient(135deg,var(--teal) 0%,var(--teal2) 100%);
+      border-color:transparent; color:#fff;
+      box-shadow:0 4px 14px rgba(13,199,224,.3);
+    }
+
+    /* ─── GALLERY SECTION ─── */
+    #gallery-section { padding:5rem 5vw 6rem; background:var(--off-white); }
+    .gallery-inner { max-width:1280px; margin:0 auto; }
+
+    /* Masonry-style grid */
+    .gallery-masonry {
+      columns:3;
+      column-gap:1.2rem;
+    }
+    .gm-item {
+      break-inside:avoid;
+      margin-bottom:1.2rem;
+      position:relative; overflow:hidden;
+      border-radius:20px;
+      cursor:pointer;
+      display:block;
+      opacity:0; transform:translateY(30px);
+      transition:opacity .5s, transform .5s, box-shadow .3s;
+    }
+    .gm-item.visible { opacity:1; transform:translateY(0); }
+    .gm-item img {
+      width:100%; display:block;
+      border-radius:20px;
+      transition:transform .65s ease;
+    }
+    .gm-item:hover img { transform:scale(1.05); }
+    .gm-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, transparent 40%, rgba(10,74,122,.82) 100%);
+      border-radius:20px;
+      opacity:0; transition:opacity .4s;
+      display:flex; flex-direction:column;
+      align-items:flex-start; justify-content:flex-end;
+      padding:1.6rem;
+    }
+    .gm-item:hover .gm-overlay { opacity:1; }
+    .gm-overlay-tag {
+      font-size:.62rem; font-weight:700; letter-spacing:.16em;
+      text-transform:uppercase; color:var(--teal);
+      margin-bottom:.4rem;
+    }
+    .gm-overlay-title {
+      font-size:.88rem; font-weight:600; color:#fff; line-height:1.4;
+    }
+    .gm-zoom-icon {
+      position:absolute; top:1rem; right:1rem;
+      width:36px; height:36px; border-radius:50%;
+      background:rgba(255,255,255,.15); backdrop-filter:blur(6px);
+      border:1px solid rgba(255,255,255,.3);
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; opacity:0; transform:scale(.8);
+      transition:opacity .35s, transform .35s;
+    }
+    .gm-item:hover .gm-zoom-icon { opacity:1; transform:scale(1); }
+
+    /* Hidden class for filtering */
+    .gm-item.hidden {
+      display:none;
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      position:fixed; inset:0; z-index:3000;
+      background:rgba(5,15,28,.96);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; pointer-events:none;
+      transition:opacity .35s;
+    }
+    .lightbox.active { opacity:1; pointer-events:all; }
+    .lb-img {
+      max-width:90vw; max-height:88vh;
+      border-radius:12px; object-fit:contain;
+      box-shadow:0 24px 80px rgba(0,0,0,.6);
+      transform:scale(.94); transition:transform .35s;
+    }
+    .lightbox.active .lb-img { transform:scale(1); }
+    .lb-close {
+      position:absolute; top:1.5rem; right:1.8rem;
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+      border-radius:50%; width:44px; height:44px;
+      color:#fff; font-size:1.3rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .2s;
+    }
+    .lb-close:hover { background:rgba(255,255,255,.2); }
+    .lb-prev, .lb-next {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+      border-radius:50%; width:52px; height:52px;
+      color:#fff; font-size:1.5rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .25s, transform .2s;
+    }
+    .lb-prev { left:1.5rem; }
+    .lb-next { right:1.5rem; }
+    .lb-prev:hover { background:rgba(255,255,255,.2); transform:translateY(-50%) translateX(-2px); }
+    .lb-next:hover { background:rgba(255,255,255,.2); transform:translateY(-50%) translateX(2px); }
+    .lb-counter {
+      position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%);
+      font-size:.72rem; font-weight:600; letter-spacing:.16em;
+      text-transform:uppercase; color:rgba(255,255,255,.55);
+    }
+
+    /* ─── CTA BAND ─── */
+    #cta-band {
+      background:linear-gradient(135deg,var(--blue-dark) 0%,#0d3e6e 100%);
+      padding:5rem 5vw; text-align:center; position:relative; overflow:hidden;
+    }
+    #cta-band::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse 80% 60% at 50% 50%, rgba(13,199,224,.12) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .cta-inner { position:relative; z-index:1; max-width:620px; margin:0 auto; }
+    .cta-tag {
+      display:inline-flex; align-items:center; gap:.7rem;
+      font-size:.65rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--teal); margin-bottom:1.2rem;
+    }
+    .cta-tag::before,.cta-tag::after { content:''; width:26px; height:1.5px; background:var(--teal); display:block; }
+    .cta-title { font-size:clamp(2rem,5vw,3.2rem); font-weight:700; color:#fff; line-height:1.2; margin-bottom:1rem; }
+    .cta-title span { color:var(--teal); font-style:italic; }
+    .cta-sub { font-size:.88rem; color:rgba(255,255,255,.65); line-height:1.8; margin-bottom:2.5rem; }
+    .cta-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+    .btn-primary {
+      background:linear-gradient(135deg,var(--teal) 0%,var(--teal2) 100%);
+      color:#fff; padding:1rem 2.6rem; font-size:.72rem; font-weight:600;
+      letter-spacing:.13em; text-transform:uppercase; text-decoration:none;
+      border:none; border-radius:60px; box-shadow:0 6px 24px rgba(0,0,0,.3);
+      position:relative; overflow:hidden; transition:transform .3s, box-shadow .3s;
+    }
+    .btn-primary::before { content:''; position:absolute; inset:0; background:rgba(255,255,255,.2); transform:translateX(-110%) skewX(-15deg); transition:transform .42s; }
+    .btn-primary:hover::before { transform:translateX(110%) skewX(-15deg); }
+    .btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(0,0,0,.4); }
+    .btn-outline-white {
+      background:transparent; border:2px solid rgba(255,255,255,.35);
+      color:#fff; padding:1rem 2.6rem; font-size:.72rem; font-weight:600;
+      letter-spacing:.13em; text-transform:uppercase; text-decoration:none;
+      border-radius:60px; transition:all .3s;
+    }
+    .btn-outline-white:hover { background:rgba(255,255,255,.1); border-color:#fff; transform:translateY(-3px); }
+
+    /* ─── FOOTER (exact match to index) ─── */
+    footer { background:var(--blue-dark); padding:3rem 5vw 2rem; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; max-width:1280px; margin:0 auto; }
+    .footer-brand img { height:44px; filter:brightness(0) invert(1); margin-bottom:1rem; }
+    .footer-brand p { font-size:.8rem; color:rgba(255,255,255,.6); line-height:1.6; margin-bottom:.5rem; }
+    .footer-col h5 { color:var(--teal); font-size:.7rem; margin-bottom:1rem; letter-spacing:1px; font-weight:700; text-transform:uppercase; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:.5rem; }
+    .footer-col a { color:rgba(255,255,255,.6); text-decoration:none; font-size:.8rem; transition:.2s; }
+    .footer-col a:hover { color:white; }
+    .footer-social { display:flex; gap:.8rem; margin-top:1rem; }
+    .social-link { width:36px; height:36px; border:1px solid rgba(255,255,255,.2); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; text-decoration:none; transition:.2s; }
+    .social-link:hover { background:var(--teal); border-color:var(--teal); transform:translateY(-2px); }
+    .footer-bottom { text-align:center; padding-top:2rem; border-top:1px solid rgba(255,255,255,.1); margin-top:2rem; color:rgba(255,255,255,.5); font-size:.7rem; }
+
+    /* ─── SECTION TAGS (shared) ─── */
+    .section-tag {
+      display:inline-flex; align-items:center; gap:.7rem;
+      font-size:.65rem; font-weight:700; letter-spacing:.22em;
+      text-transform:uppercase; color:var(--blue);
+      margin-bottom:1rem;
+    }
+    .section-tag::before { content:''; width:24px; height:2px; background:var(--teal); display:block; flex-shrink:0; }
+    .section-title { font-size:clamp(2rem,4.5vw,3rem); font-weight:700; line-height:1.2; color:var(--text-dark); }
+    .section-title span { color:var(--blue); }
+    .accent { color:var(--teal); }
+
+    /* ─── REVEAL ─── */
+    .reveal-up   { opacity:0; transform:translateY(45px); }
+    .reveal-left { opacity:0; transform:translateX(-45px); }
+    .reveal-right{ opacity:0; transform:translateX(45px); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width:1024px) {
+      .gallery-masonry { columns:2; }
+      .footer-grid { grid-template-columns:1fr 1fr; gap:2rem; }
+    }
+    @media (max-width:768px) {
+      html,body { overflow-x:hidden !important; }
+      .nav-center,.nav-quote-btn { display:none; }
+      .nav-toggle { display:flex; }
+      .gallery-masonry { columns:1; }
+      .filter-bar { gap:.5rem; top:66px; }
+      .filter-btn { padding:.42rem 1rem; font-size:.62rem; }
+      .lb-prev { left:.5rem; }
+      .lb-next { right:.5rem; }
+      .footer-grid { grid-template-columns:1fr; text-align:center; }
+      .footer-social { justify-content:center; }
+      .cta-actions { flex-direction:column; align-items:center; }
+    }
+    @media (max-width:480px) {
+      .gallery-masonry { columns:1; }
+      .page-hero { padding:8rem 5vw 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/main_logo_img.png?raw=true" alt="Kiwi Pools UK Ltd Logo" /></a>
+  <div class="nav-center">
+    <ul class="nav-links">
+      <li><a href="index.html#about-wrap">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#process-wrap">Our Process</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <a href="https://www.facebook.com/KiwiPoolsUK" class="nav-icon-link" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+    <a href="https://www.instagram.com/kiwipoolsuk" class="nav-icon-link" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+    <a href="tel:07831685649" class="nav-icon-link" aria-label="Call us"><svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></a>
+    <a href="index.html#contact" class="nav-quote-btn">Free Quote</a>
+    <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ─── MOBILE OVERLAY ─── -->
+<div class="mobile-menu-overlay" id="menuOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileClose">✕</button>
+  <a href="index.html#about-wrap">About</a>
+  <a href="index.html#services">Services</a>
+  <a href="index.html#process-wrap">Our Process</a>
+  <a href="index.html#reviews">Reviews</a>
+  <a href="gallery.html" style="color:var(--teal);">Gallery</a>
+  <a href="index.html#contact" class="mobile-menu-cta">Get a Free Quote</a>
+</div>
+
+<!-- ─── PAGE HERO ─── -->
+<section class="page-hero">
+  <!-- Floating circles (same as index) -->
+  <div class="hero-circle hc-1"></div>
+  <div class="hero-circle hc-2"></div>
+  <div class="hero-circle hc-3"></div>
+
+  <!-- Animated water lines (same as index) -->
+  <div class="hero-water-lines">
+    <svg viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="rgba(255,255,255,.6)" stroke-width="1" fill="none">
+        <path id="wl1" d="M-200,150 Q360,90 720,160 T1640,130"/>
+        <path id="wl2" d="M-200,230 Q360,170 720,240 T1640,210"/>
+        <path id="wl3" d="M-200,310 Q360,250 720,320 T1640,290"/>
+        <path id="wl4" d="M-200,390 Q360,330 720,400 T1640,370"/>
+        <path id="wl5" d="M-200,80  Q360,20  720,90  T1640,60"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="page-hero-inner">
+    <div class="page-hero-tag">Our Portfolio</div>
+    <h1 class="page-hero-title">Our Work, <span>Up Close</span></h1>
+    <p class="page-hero-sub">From sparkling serviced pools to full refurbishments — browse the results of our craftsmanship across Kent and the South East.</p>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
+      <div style="background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);padding:.55rem 1.4rem;border-radius:60px;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:.1em;">15 Projects</div>
+      <div style="background:rgba(13,199,224,.15);backdrop-filter:blur(8px);border:1px solid rgba(13,199,224,.3);padding:.55rem 1.4rem;border-radius:60px;font-size:.7rem;font-weight:600;color:var(--teal);letter-spacing:.1em;">Kent &amp; South East</div>
+    </div>
+  </div>
+
+  <!-- Animated wave bottom — exactly like index hero -->
+  <div class="hero-wave-bottom">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--off-white)"/>
+      <path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--off-white)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ─── FILTER BAR ─── -->
+<div class="filter-bar" id="filterBar">
+  <button class="filter-btn active" data-filter="all">All Projects</button>
+  <button class="filter-btn" data-filter="servicing">Servicing</button>
+  <button class="filter-btn" data-filter="refurbishment">Refurbishment</button>
+  <button class="filter-btn" data-filter="installation">Installation</button>
+  <button class="filter-btn" data-filter="covers">Covers</button>
+</div>
+
+<!-- ─── GALLERY ─── -->
+<section id="gallery-section">
+  <div class="gallery-inner">
+    <div class="gallery-masonry" id="galleryMasonry">
+
+      <div class="gm-item" data-category="refurbishment" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g1.webp" data-label="Pool Refurbishment" data-loc="Sevenoaks, Kent">
+        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g1.webp" alt="Pool Project 1" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Refurbishment</div>
+          <div class="gm-overlay-title">Pool Refurbishment<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Sevenoaks, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="servicing" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g2.webp" data-label="Pool Servicing" data-loc="Tonbridge, Kent">
+        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g2.webp" alt="Pool Project 2" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Servicing</div>
+          <div class="gm-overlay-title">Pool Servicing<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Tonbridge, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="installation" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g3.webp" data-label="Equipment Install" data-loc="Maidstone, Kent">
+        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g3.webp" alt="Pool Project 3" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Installation</div>
+          <div class="gm-overlay-title">Equipment Install<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Maidstone, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="covers" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g4.webp" data-label="Safety Cover Install" data-loc="Tunbridge Wells, Kent">
+        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g4.webp" alt="Pool Project 4" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Covers</div>
+          <div class="gm-overlay-title">Safety Cover Install<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Tunbridge Wells, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="refurbishment" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g5.webp" data-label="Liner Replacement" data-loc="Folkestone, Kent">
+        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g5.webp" alt="Pool Project 5" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Refurbishment</div>
+          <div class="gm-overlay-title">Liner Replacement<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Folkestone, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="servicing" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g6.webp" data-label="Water Treatment" data-loc="Canterbury, Kent">
+        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g6.webp" alt="Pool Project 6" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Servicing</div>
+          <div class="gm-overlay-title">Water Treatment<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Canterbury, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="installation" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g7.webp" data-label="Automated Dosing" data-loc="Gravesend, Kent">
+        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g7.webp" alt="Pool Project 7" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Installation</div>
+          <div class="gm-overlay-title">Automated Dosing<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Gravesend, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="refurbishment" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g8.webp" data-label="Full Refurbishment" data-loc="Dartford, Kent">
+        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g8.webp" alt="Pool Project 8" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Refurbishment</div>
+          <div class="gm-overlay-title">Full Refurbishment<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Dartford, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="covers" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g9.webp" data-label="Solar Cover" data-loc="Chatham, Kent">
+        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g9.webp" alt="Pool Project 9" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Covers</div>
+          <div class="gm-overlay-title">Solar Cover<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Chatham, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="servicing" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g10.webp" data-label="Annual Service" data-loc="Rochester, Kent">
+        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g10.webp" alt="Pool Project 10" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Servicing</div>
+          <div class="gm-overlay-title">Annual Service<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Rochester, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="installation" data-src="img/gallery/g11.webp" data-label="Heater Installation" data-loc="Gillingham, Kent">
+        <img src="img/gallery/g11.webp" alt="Pool Project 11" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Installation</div>
+          <div class="gm-overlay-title">Heater Installation<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Gillingham, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="refurbishment" data-src="img/gallery/g12.webp" data-label="Pool Restoration" data-loc="Sittingbourne, Kent">
+        <img src="img/gallery/g12.webp" alt="Pool Project 12" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Refurbishment</div>
+          <div class="gm-overlay-title">Pool Restoration<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Sittingbourne, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="covers" data-src="img/gallery/g13.webp" data-label="Slatted Cover" data-loc="Faversham, Kent">
+        <img src="img/gallery/g13.webp" alt="Pool Project 13" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Covers</div>
+          <div class="gm-overlay-title">Slatted Cover<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Faversham, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="servicing" data-src="img/gallery/g14.webp" data-label="Deep Clean Service" data-loc="Whitstable, Kent">
+        <img src="img/gallery/g14.webp" alt="Pool Project 14" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Servicing</div>
+          <div class="gm-overlay-title">Deep Clean Service<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Whitstable, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="installation" data-src="img/gallery/g15.webp" data-label="Pump &amp; Filter Upgrade" data-loc="Herne Bay, Kent">
+        <img src="img/gallery/g15.webp" alt="Pool Project 15" loading="lazy" />
+        <div class="gm-overlay">
+          <div class="gm-overlay-tag">Installation</div>
+          <div class="gm-overlay-title">Pump &amp; Filter Upgrade<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Herne Bay, Kent</span></div>
+        </div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+    </div><!-- /gallery-masonry -->
+  </div>
+</section>
+
+<!-- ─── LIGHTBOX ─── -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-prev" id="lbPrev">&#8249;</button>
+  <img class="lb-img" id="lbImg" src="" alt="Gallery" />
+  <button class="lb-next" id="lbNext">&#8250;</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<!-- ─── WAVE DIVIDER: gallery → CTA ─── -->
+<div class="section-wave" style="background:var(--off-white);">
+  <svg viewBox="0 0 1440 70" preserveAspectRatio="none" style="height:70px;">
+    <path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,70 L0,70 Z" fill="#0a4a7a"/>
+    <path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,70 L0,70 Z" fill="#0a4a7a" opacity=".55"/>
+  </svg>
+</div>
+
+<!-- ─── CTA BAND ─── -->
+<section id="cta-band">
+  <div class="cta-inner reveal-up">
+    <div class="cta-tag">Ready to Transform Your Pool?</div>
+    <h2 class="cta-title">Let's Create Your <span>Perfect Pool</span></h2>
+    <p class="cta-sub">Every project in our gallery started with a free consultation. Get in touch today and let's discuss what we can do for your pool.</p>
+    <div class="cta-actions">
+      <a href="index.html#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="index.html#services" class="btn-outline-white">View Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/main_logo_img.png?raw=true" alt="Kiwi Pools UK Ltd" />
+      <p>Setting the standard for modern, dependable pool care across Kent and the South East.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/KiwiPoolsUK" class="social-link" target="_blank" rel="noopener" aria-label="Facebook"><svg width="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/kiwipoolsuk" class="social-link" target="_blank" rel="noopener" aria-label="Instagram"><svg width="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="index.html#services">Pool Servicing</a></li>
+        <li><a href="index.html#services">Refurbishment</a></li>
+        <li><a href="index.html#services">Heater &amp; Pump</a></li>
+        <li><a href="index.html#services">Automated Dosing</a></li>
+        <li><a href="index.html#services">Safety Covers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="index.html#about-wrap">About Us</a></li>
+        <li><a href="index.html#process-wrap">Our Process</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:07831685649">07831 685 649</a></li>
+        <li><a href="mailto:info@kiwipools.co.uk">info@kiwipools.co.uk</a></li>
+        <li><a href="index.html">Kent &amp; South East, UK</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Kiwi Pools UK Ltd. All rights reserved. | <a href="privacy-policy.html" style="color:rgba(255,255,255,.4);text-decoration:none;">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ── GSAP water line animations (same as index hero) ── */
+  gsap.to('#wl1', { attr:{ d:'M-200,170 Q360,110 720,140 T1640,150' }, duration:8,  repeat:-1, yoyo:true, ease:'sine.inOut' });
+  gsap.to('#wl2', { attr:{ d:'M-200,250 Q360,190 720,220 T1640,230' }, duration:10, repeat:-1, yoyo:true, ease:'sine.inOut', delay:1 });
+  gsap.to('#wl3', { attr:{ d:'M-200,330 Q360,270 720,300 T1640,310' }, duration:9,  repeat:-1, yoyo:true, ease:'sine.inOut', delay:2 });
+  gsap.to('#wl4', { attr:{ d:'M-200,410 Q360,350 720,380 T1640,390' }, duration:11, repeat:-1, yoyo:true, ease:'sine.inOut', delay:.5 });
+  gsap.to('#wl5', { attr:{ d:'M-200,100 Q360,40  720,70  T1640,80'  }, duration:7,  repeat:-1, yoyo:true, ease:'sine.inOut', delay:3 });
+
+  /* ── Nav scroll ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+
+  /* ── Mobile menu ── */
+  const navToggle   = document.getElementById('navToggle');
+  const mobileMenu  = document.getElementById('mobileMenu');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const mobileClose = document.getElementById('mobileClose');
+
+  function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.add('open'); navToggle.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu(){ mobileMenu.classList.remove('open'); menuOverlay.classList.remove('open'); navToggle.classList.remove('open'); document.body.style.overflow=''; }
+
+  navToggle.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  menuOverlay.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  /* ── Filter buttons ── */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const allItems   = document.querySelectorAll('.gm-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      allItems.forEach(item => {
+        const cat = item.dataset.category;
+        if (filter === 'all' || cat === filter) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  /* ── Gallery item appear on scroll (IntersectionObserver) ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, (Array.from(allItems).indexOf(entry.target) % 3) * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  allItems.forEach(item => observer.observe(item));
+
+  /* ── Lightbox ── */
+  const lightbox  = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lbImg');
+  const lbCounter = document.getElementById('lbCounter');
+  let visibleItems = [];
+  let currentIdx  = 0;
+
+  function getVisible() {
+    return Array.from(document.querySelectorAll('.gm-item:not(.hidden)'));
+  }
+
+  function openLightbox(item) {
+    visibleItems = getVisible();
+    currentIdx   = visibleItems.indexOf(item);
+    lbImg.src    = item.dataset.src;
+    updateCounter();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { lbImg.src = ''; }, 350);
+  }
+  function shiftLightbox(dir) {
+    visibleItems = getVisible();
+    currentIdx   = (currentIdx + dir + visibleItems.length) % visibleItems.length;
+    lbImg.style.opacity = '0';
+    setTimeout(() => {
+      lbImg.src = visibleItems[currentIdx].dataset.src;
+      lbImg.style.opacity = '1';
+      updateCounter();
+    }, 150);
+  }
+  function updateCounter() {
+    lbCounter.textContent = (currentIdx + 1) + ' / ' + visibleItems.length;
+  }
+
+  lbImg.style.transition = 'opacity .15s';
+
+  allItems.forEach(item => item.addEventListener('click', () => openLightbox(item)));
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', () => shiftLightbox(-1));
+  document.getElementById('lbNext').addEventListener('click', () => shiftLightbox(1));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   shiftLightbox(-1);
+    if (e.key === 'ArrowRight')  shiftLightbox(1);
+  });
+
+  /* ── GSAP Reveals ── */
+  gsap.utils.toArray('.reveal-up').forEach(el => {
+    gsap.to(el, { opacity:1, y:0, duration:.9, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 88%', toggleActions:'play none none none' }
+    });
+  });
+
+  /* ── Page hero entrance ── */
+  gsap.fromTo('.page-hero-inner', { opacity:0, y:30 }, { opacity:1, y:0, duration:1.1, ease:'power3.out', delay:.2 });
+</script>
+</body>
+</html>
