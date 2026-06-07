@@ -445,33 +445,17 @@
 
       section { padding:3.5rem 5vw; }
 
-      /* ── Hero: auto height on mobile so content + wave all fit ── */
-      #hero {
-        height:auto;
-        min-height:100vh;
-        padding-bottom:0;
-      }
-
-      /* ── Stats: no bottom padding, wave handles spacing ── */
+      /* ── Hero stats: padding-bottom clears the tall mobile wave ── */
       .hero-stats {
-        padding:0 1.2rem 1rem;
+        padding:0 1.2rem 165px; /* 165px = mobile wave height + gap */
       }
-      .stats-grid { grid-template-columns:repeat(3,1fr); gap:0.8rem; }
+      .stats-grid { grid-template-columns:repeat(3,1fr); gap:1rem; }
       .stat-num  { font-size:clamp(1.4rem,5vw,2rem); }
       .stat-label{ font-size:.52rem; letter-spacing:.1em; }
 
-      /* ── On mobile the wave becomes a FLEX CHILD (not absolute)
-             so it always sits right below the stats, always visible ── */
-      .hero-wave-bottom {
-        position:relative !important;
-        bottom:auto !important;
-        width:100%;
-        margin-top:auto; /* push to bottom of flex container */
-        line-height:0;
-        overflow:hidden;
-      }
-      .hero-wave-bottom svg { height:90px; }
-      .section-wave svg     { height:65px; }
+      /* ── Wave taller on mobile so it's clearly visible ── */
+      .hero-wave-bottom svg  { height:145px; }
+      .section-wave svg      { height:65px; }
 
       /* ── About: text first on mobile ── */
       #about { grid-template-columns:1fr; gap:2rem; }
@@ -529,7 +513,7 @@
       .footer-social,.footer-bayrol { justify-content:center; }
 
       /* ── Scroll indicator higher up ── */
-      .scroll-indicator { display:none; }
+      .scroll-indicator { bottom:12rem; }
     }
   </style>
 </head>
