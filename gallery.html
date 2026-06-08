@@ -42,7 +42,7 @@
     }
     body > * { overflow-x:hidden; max-width:100vw; }
 
-    /* ─── NAVBAR (exact match to index) ─── */
+    /* ─── NAVBAR ─── */
     nav {
       position:fixed; top:0; left:0; right:0; z-index:1000;
       display:flex; align-items:center; justify-content:space-between;
@@ -156,7 +156,7 @@
       max-width:520px; margin:0 auto 2.2rem;
     }
 
-    /* ─── WAVE ANIMATIONS (same as index.html) ─── */
+    /* ─── WAVE ANIMATIONS ─── */
     .hero-wave-bottom {
       position:absolute; bottom:-1px; left:0; right:0;
       line-height:0; z-index:2; width:100%; overflow:hidden;
@@ -177,20 +177,17 @@
     .wa { animation:waveA 7s ease-in-out infinite; }
     .wb { animation:waveB 9s ease-in-out infinite; opacity:.55; }
 
-    /* Section wave divider */
     .section-wave {
       position:relative; margin-bottom:-2px;
       line-height:0; overflow:hidden; width:100%;
     }
     .section-wave svg { display:block; width:100%; }
 
-    /* Floating water lines in hero bg (like index) */
     .hero-water-lines {
       position:absolute; inset:0; pointer-events:none; z-index:1;
     }
     .hero-water-lines svg { width:100%; height:100%; opacity:.18; }
 
-    /* Hero circles from index */
     .hero-circle { position:absolute; border-radius:50%; pointer-events:none; z-index:1; }
     .hc-1 { width:600px; height:600px; top:-150px; right:-150px; background:radial-gradient(circle,rgba(255,255,255,.12) 0%,rgba(255,255,255,.05) 50%,transparent 70%); animation:floatC 14s ease-in-out infinite alternate; }
     .hc-2 { width:350px; height:350px; bottom:-80px; left:-80px; background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 65%); animation:floatC 18s ease-in-out infinite alternate-reverse; }
@@ -223,7 +220,6 @@
     #gallery-section { padding:5rem 5vw 6rem; background:var(--off-white); }
     .gallery-inner { max-width:1280px; margin:0 auto; }
 
-    /* Masonry-style grid */
     .gallery-masonry {
       columns:3;
       column-gap:1.2rem;
@@ -274,7 +270,6 @@
     }
     .gm-item:hover .gm-zoom-icon { opacity:1; transform:scale(1); }
 
-    /* Hidden class for filtering */
     .gm-item.hidden {
       display:none;
     }
@@ -362,7 +357,7 @@
     }
     .btn-outline-white:hover { background:rgba(255,255,255,.1); border-color:#fff; transform:translateY(-3px); }
 
-    /* ─── FOOTER (exact match to index) ─── */
+    /* ─── FOOTER ─── */
     footer { background:var(--blue-dark); padding:3rem 5vw 2rem; }
     .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; max-width:1280px; margin:0 auto; }
     .footer-brand img { height:44px; filter:brightness(0) invert(1); margin-bottom:1rem; }
@@ -376,23 +371,6 @@
     .social-link { width:36px; height:36px; border:1px solid rgba(255,255,255,.2); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; text-decoration:none; transition:.2s; }
     .social-link:hover { background:var(--teal); border-color:var(--teal); transform:translateY(-2px); }
     .footer-bottom { text-align:center; padding-top:2rem; border-top:1px solid rgba(255,255,255,.1); margin-top:2rem; color:rgba(255,255,255,.5); font-size:.7rem; }
-
-    /* ─── SECTION TAGS (shared) ─── */
-    .section-tag {
-      display:inline-flex; align-items:center; gap:.7rem;
-      font-size:.65rem; font-weight:700; letter-spacing:.22em;
-      text-transform:uppercase; color:var(--blue);
-      margin-bottom:1rem;
-    }
-    .section-tag::before { content:''; width:24px; height:2px; background:var(--teal); display:block; flex-shrink:0; }
-    .section-title { font-size:clamp(2rem,4.5vw,3rem); font-weight:700; line-height:1.2; color:var(--text-dark); }
-    .section-title span { color:var(--blue); }
-    .accent { color:var(--teal); }
-
-    /* ─── REVEAL ─── */
-    .reveal-up   { opacity:0; transform:translateY(45px); }
-    .reveal-left { opacity:0; transform:translateX(-45px); }
-    .reveal-right{ opacity:0; transform:translateX(45px); }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width:1024px) {
@@ -456,12 +434,10 @@
 
 <!-- ─── PAGE HERO ─── -->
 <section class="page-hero">
-  <!-- Floating circles (same as index) -->
   <div class="hero-circle hc-1"></div>
   <div class="hero-circle hc-2"></div>
   <div class="hero-circle hc-3"></div>
 
-  <!-- Animated water lines (same as index) -->
   <div class="hero-water-lines">
     <svg viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <g stroke="rgba(255,255,255,.6)" stroke-width="1" fill="none">
@@ -479,12 +455,11 @@
     <h1 class="page-hero-title">Our Work, <span>Up Close</span></h1>
     <p class="page-hero-sub">From sparkling serviced pools to full refurbishments — browse the results of our craftsmanship across Kent and the South East.</p>
     <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
-      <div style="background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);padding:.55rem 1.4rem;border-radius:60px;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:.1em;">15 Projects</div>
+      <div style="background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);padding:.55rem 1.4rem;border-radius:60px;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:.1em;">33 Projects</div>
       <div style="background:rgba(13,199,224,.15);backdrop-filter:blur(8px);border:1px solid rgba(13,199,224,.3);padding:.55rem 1.4rem;border-radius:60px;font-size:.7rem;font-weight:600;color:var(--teal);letter-spacing:.1em;">Kent &amp; South East</div>
     </div>
   </div>
 
-  <!-- Animated wave bottom — exactly like index hero -->
   <div class="hero-wave-bottom">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
       <path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--off-white)"/>
@@ -509,140 +484,203 @@
 
       <div class="gm-item" data-category="refurbishment" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g1.webp" data-label="Pool Refurbishment" data-loc="Sevenoaks, Kent">
         <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g1.webp" alt="Pool Project 1" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Refurbishment</div>
-          <div class="gm-overlay-title">Pool Refurbishment<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Sevenoaks, Kent</span></div>
-        </div>
+        <div class="gm-overlay"><div class="gm-overlay-tag">Refurbishment</div><div class="gm-overlay-title">Pool Refurbishment<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Sevenoaks, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
       <div class="gm-item" data-category="servicing" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g2.webp" data-label="Pool Servicing" data-loc="Tonbridge, Kent">
         <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g2.webp" alt="Pool Project 2" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Servicing</div>
-          <div class="gm-overlay-title">Pool Servicing<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Tonbridge, Kent</span></div>
-        </div>
+        <div class="gm-overlay"><div class="gm-overlay-tag">Servicing</div><div class="gm-overlay-title">Pool Servicing<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Tonbridge, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
       <div class="gm-item" data-category="installation" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g3.webp" data-label="Equipment Install" data-loc="Maidstone, Kent">
         <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g3.webp" alt="Pool Project 3" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Installation</div>
-          <div class="gm-overlay-title">Equipment Install<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Maidstone, Kent</span></div>
-        </div>
+        <div class="gm-overlay"><div class="gm-overlay-tag">Installation</div><div class="gm-overlay-title">Equipment Install<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Maidstone, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
       <div class="gm-item" data-category="covers" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g4.webp" data-label="Safety Cover Install" data-loc="Tunbridge Wells, Kent">
         <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g4.webp" alt="Pool Project 4" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Covers</div>
-          <div class="gm-overlay-title">Safety Cover Install<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Tunbridge Wells, Kent</span></div>
-        </div>
+        <div class="gm-overlay"><div class="gm-overlay-tag">Covers</div><div class="gm-overlay-title">Safety Cover Install<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Tunbridge Wells, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
       <div class="gm-item" data-category="refurbishment" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g5.webp" data-label="Liner Replacement" data-loc="Folkestone, Kent">
         <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g5.webp" alt="Pool Project 5" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Refurbishment</div>
-          <div class="gm-overlay-title">Liner Replacement<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Folkestone, Kent</span></div>
-        </div>
+        <div class="gm-overlay"><div class="gm-overlay-tag">Refurbishment</div><div class="gm-overlay-title">Liner Replacement<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Folkestone, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
       <div class="gm-item" data-category="servicing" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g6.webp" data-label="Water Treatment" data-loc="Canterbury, Kent">
         <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g6.webp" alt="Pool Project 6" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Servicing</div>
-          <div class="gm-overlay-title">Water Treatment<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Canterbury, Kent</span></div>
-        </div>
+        <div class="gm-overlay"><div class="gm-overlay-tag">Servicing</div><div class="gm-overlay-title">Water Treatment<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Canterbury, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
-      <div class="gm-item" data-category="installation" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g7.webp" data-label="Automated Dosing" data-loc="Gravesend, Kent">
-        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g7.webp" alt="Pool Project 7" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Installation</div>
-          <div class="gm-overlay-title">Automated Dosing<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Gravesend, Kent</span></div>
-        </div>
+      <div class="gm-item" data-category="installation" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.20%20PM.jpeg?raw=true" data-label="Automated Dosing" data-loc="Gravesend, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.20%20PM.jpeg?raw=true" alt="Pool Project 7" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Installation</div><div class="gm-overlay-title">Automated Dosing<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Gravesend, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
-      <div class="gm-item" data-category="refurbishment" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g8.webp" data-label="Full Refurbishment" data-loc="Dartford, Kent">
-        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g8.webp" alt="Pool Project 8" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Refurbishment</div>
-          <div class="gm-overlay-title">Full Refurbishment<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Dartford, Kent</span></div>
-        </div>
+      <div class="gm-item" data-category="refurbishment" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.21%20PM.jpeg?raw=true" data-label="Full Refurbishment" data-loc="Dartford, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.21%20PM.jpeg?raw=true" alt="Pool Project 8" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Refurbishment</div><div class="gm-overlay-title">Full Refurbishment<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Dartford, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
-      <div class="gm-item" data-category="covers" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g9.webp" data-label="Solar Cover" data-loc="Chatham, Kent">
-        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g9.webp" alt="Pool Project 9" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Covers</div>
-          <div class="gm-overlay-title">Solar Cover<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Chatham, Kent</span></div>
-        </div>
+      <div class="gm-item" data-category="installation" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.26%20PM.jpeg?raw=true" data-label="Equipment Setup" data-loc="Ashford, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.26%20PM.jpeg?raw=true" alt="Pool Project 9" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Installation</div><div class="gm-overlay-title">Equipment Setup<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Ashford, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
-      <div class="gm-item" data-category="servicing" data-src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g10.webp" data-label="Annual Service" data-loc="Rochester, Kent">
-        <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g10.webp" alt="Pool Project 10" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Servicing</div>
-          <div class="gm-overlay-title">Annual Service<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Rochester, Kent</span></div>
-        </div>
+      <div class="gm-item" data-category="servicing" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.32%20PM.jpeg?raw=true" data-label="Routine Service" data-loc="Rochester, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.32%20PM.jpeg?raw=true" alt="Pool Project 10" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Servicing</div><div class="gm-overlay-title">Routine Service<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Rochester, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
-      <div class="gm-item" data-category="installation" data-src="img/gallery/g11.webp" data-label="Heater Installation" data-loc="Gillingham, Kent">
-        <img src="img/gallery/g11.webp" alt="Pool Project 11" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Installation</div>
-          <div class="gm-overlay-title">Heater Installation<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Gillingham, Kent</span></div>
-        </div>
+      <div class="gm-item" data-category="refurbishment" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.33%20PM.jpeg?raw=true" data-label="Pool Renovation" data-loc="Sittingbourne, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.33%20PM.jpeg?raw=true" alt="Pool Project 11" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Refurbishment</div><div class="gm-overlay-title">Pool Renovation<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Sittingbourne, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
-      <div class="gm-item" data-category="refurbishment" data-src="img/gallery/g12.webp" data-label="Pool Restoration" data-loc="Sittingbourne, Kent">
-        <img src="img/gallery/g12.webp" alt="Pool Project 12" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Refurbishment</div>
-          <div class="gm-overlay-title">Pool Restoration<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Sittingbourne, Kent</span></div>
-        </div>
+      <div class="gm-item" data-category="servicing" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.34%20PM.jpeg?raw=true" data-label="Chemical Balance" data-loc="Chatham, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.34%20PM.jpeg?raw=true" alt="Pool Project 12" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Servicing</div><div class="gm-overlay-title">Chemical Balance<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Chatham, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
-      <div class="gm-item" data-category="covers" data-src="img/gallery/g13.webp" data-label="Slatted Cover" data-loc="Faversham, Kent">
-        <img src="img/gallery/g13.webp" alt="Pool Project 13" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Covers</div>
-          <div class="gm-overlay-title">Slatted Cover<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Faversham, Kent</span></div>
-        </div>
+      <div class="gm-item" data-category="covers" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.47%20PM%20(1).jpeg?raw=true" data-label="Winter Cover" data-loc="Tunbridge Wells, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.47%20PM%20(1).jpeg?raw=true" alt="Pool Project 13" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Covers</div><div class="gm-overlay-title">Winter Cover<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Tunbridge Wells, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
-      <div class="gm-item" data-category="servicing" data-src="img/gallery/g14.webp" data-label="Deep Clean Service" data-loc="Whitstable, Kent">
-        <img src="img/gallery/g14.webp" alt="Pool Project 14" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Servicing</div>
-          <div class="gm-overlay-title">Deep Clean Service<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Whitstable, Kent</span></div>
-        </div>
+      <div class="gm-item" data-category="installation" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.47%20PM.jpeg?raw=true" data-label="Pump Installation" data-loc="Faversham, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.47%20PM.jpeg?raw=true" alt="Pool Project 14" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Installation</div><div class="gm-overlay-title">Pump Installation<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Faversham, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
-      <div class="gm-item" data-category="installation" data-src="img/gallery/g15.webp" data-label="Pump &amp; Filter Upgrade" data-loc="Herne Bay, Kent">
-        <img src="img/gallery/g15.webp" alt="Pool Project 15" loading="lazy" />
-        <div class="gm-overlay">
-          <div class="gm-overlay-tag">Installation</div>
-          <div class="gm-overlay-title">Pump &amp; Filter Upgrade<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Herne Bay, Kent</span></div>
-        </div>
+      <div class="gm-item" data-category="refurbishment" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.48%20PM%20(1).jpeg?raw=true" data-label="Tile & Grout Restoration" data-loc="Whitstable, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.48%20PM%20(1).jpeg?raw=true" alt="Pool Project 15" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Refurbishment</div><div class="gm-overlay-title">Tile & Grout Restoration<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Whitstable, Kent</span></div></div>
         <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
       </div>
 
-    </div><!-- /gallery-masonry -->
+      <div class="gm-item" data-category="servicing" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.48%20PM.jpeg?raw=true" data-label="Filter Maintenance" data-loc="Herne Bay, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.48%20PM.jpeg?raw=true" alt="Pool Project 16" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Servicing</div><div class="gm-overlay-title">Filter Maintenance<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Herne Bay, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="covers" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.49%20PM%20(1).jpeg?raw=true" data-label="Solar Cover Installation" data-loc="Deal, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.49%20PM%20(1).jpeg?raw=true" alt="Pool Project 17" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Covers</div><div class="gm-overlay-title">Solar Cover Installation<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Deal, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="installation" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.49%20PM%20(2).jpeg?raw=true" data-label="Heater Setup" data-loc="Margate, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.49%20PM%20(2).jpeg?raw=true" alt="Pool Project 18" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Installation</div><div class="gm-overlay-title">Heater Setup<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Margate, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="refurbishment" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.49%20PM.jpeg?raw=true" data-label="Liner Replacement" data-loc="Broadstairs, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.49%20PM.jpeg?raw=true" alt="Pool Project 19" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Refurbishment</div><div class="gm-overlay-title">Liner Replacement<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Broadstairs, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="servicing" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.50%20PM%20(1).jpeg?raw=true" data-label="Deep Clean" data-loc="Ramsgate, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.50%20PM%20(1).jpeg?raw=true" alt="Pool Project 20" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Servicing</div><div class="gm-overlay-title">Deep Clean<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Ramsgate, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="installation" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.50%20PM.jpeg?raw=true" data-label="Control Panel Setup" data-loc="Dover, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.50%20PM.jpeg?raw=true" alt="Pool Project 21" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Installation</div><div class="gm-overlay-title">Control Panel Setup<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Dover, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="refurbishment" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.54%20PM%20(1).jpeg?raw=true" data-label="Complete Overhaul" data-loc="Folkestone, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.54%20PM%20(1).jpeg?raw=true" alt="Pool Project 22" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Refurbishment</div><div class="gm-overlay-title">Complete Overhaul<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Folkestone, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="covers" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.54%20PM%20(2).jpeg?raw=true" data-label="Safety Cover Setup" data-loc="Sandwich, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.54%20PM%20(2).jpeg?raw=true" alt="Pool Project 23" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Covers</div><div class="gm-overlay-title">Safety Cover Setup<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Sandwich, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="servicing" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.54%20PM.jpeg?raw=true" data-label="Water Analysis" data-loc="Hythe, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.54%20PM.jpeg?raw=true" alt="Pool Project 24" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Servicing</div><div class="gm-overlay-title">Water Analysis<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Hythe, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="installation" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.55%20PM%20(1).jpeg?raw=true" data-label="Pipe & Fitting Work" data-loc="New Romney, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.55%20PM%20(1).jpeg?raw=true" alt="Pool Project 25" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Installation</div><div class="gm-overlay-title">Pipe & Fitting Work<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">New Romney, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="refurbishment" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.55%20PM%20(2).jpeg?raw=true" data-label="Surface Repair" data-loc="Lydd, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.55%20PM%20(2).jpeg?raw=true" alt="Pool Project 26" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Refurbishment</div><div class="gm-overlay-title">Surface Repair<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Lydd, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="servicing" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.55%20PM.jpeg?raw=true" data-label="Seasonal Maintenance" data-loc="Tenterden, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.55%20PM.jpeg?raw=true" alt="Pool Project 27" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Servicing</div><div class="gm-overlay-title">Seasonal Maintenance<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Tenterden, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="covers" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.56%20PM%20(1).jpeg?raw=true" data-label="Slatted Cover Install" data-loc="Cranbrook, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.56%20PM%20(1).jpeg?raw=true" alt="Pool Project 28" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Covers</div><div class="gm-overlay-title">Slatted Cover Install<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Cranbrook, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="installation" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.56%20PM%20(2).jpeg?raw=true" data-label="Filter System Upgrade" data-loc="Hawkhurst, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.56%20PM%20(2).jpeg?raw=true" alt="Pool Project 29" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Installation</div><div class="gm-overlay-title">Filter System Upgrade<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Hawkhurst, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="refurbishment" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.56%20PM.jpeg?raw=true" data-label="Equipment Modernisation" data-loc="Paddock Wood, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.56%20PM.jpeg?raw=true" alt="Pool Project 30" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Refurbishment</div><div class="gm-overlay-title">Equipment Modernisation<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Paddock Wood, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="servicing" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.57%20PM%20(1).jpeg?raw=true" data-label="pH & Chlorine Check" data-loc="Staplehurst, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.57%20PM%20(1).jpeg?raw=true" alt="Pool Project 31" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Servicing</div><div class="gm-overlay-title">pH & Chlorine Check<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Staplehurst, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="installation" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.57%20PM.jpeg?raw=true" data-label="Heat Pump Install" data-loc="Marden, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.57%20PM.jpeg?raw=true" alt="Pool Project 32" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Installation</div><div class="gm-overlay-title">Heat Pump Install<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Marden, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+      <div class="gm-item" data-category="refurbishment" data-src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.58%20PM.jpeg?raw=true" data-label="Full System Service" data-loc="Edenbridge, Kent">
+        <img src="https://github.com/gtwebstudio101-pixel/kiwipools/blob/main/kiwipools/img/gallery/fac/WhatsApp%20Image%202026-06-08%20at%207.33.58%20PM.jpeg?raw=true" alt="Pool Project 33" loading="lazy" />
+        <div class="gm-overlay"><div class="gm-overlay-tag">Refurbishment</div><div class="gm-overlay-title">Full System Service<br><span style="opacity:.7;font-size:.78rem;font-weight:400;">Edenbridge, Kent</span></div></div>
+        <div class="gm-zoom-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -655,7 +693,7 @@
   <div class="lb-counter" id="lbCounter"></div>
 </div>
 
-<!-- ─── WAVE DIVIDER: gallery → CTA ─── -->
+<!-- ─── WAVE DIVIDER ─── -->
 <div class="section-wave" style="background:var(--off-white);">
   <svg viewBox="0 0 1440 70" preserveAspectRatio="none" style="height:70px;">
     <path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,70 L0,70 Z" fill="#0a4a7a"/>
@@ -724,18 +762,15 @@
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ── GSAP water line animations (same as index hero) ── */
   gsap.to('#wl1', { attr:{ d:'M-200,170 Q360,110 720,140 T1640,150' }, duration:8,  repeat:-1, yoyo:true, ease:'sine.inOut' });
   gsap.to('#wl2', { attr:{ d:'M-200,250 Q360,190 720,220 T1640,230' }, duration:10, repeat:-1, yoyo:true, ease:'sine.inOut', delay:1 });
   gsap.to('#wl3', { attr:{ d:'M-200,330 Q360,270 720,300 T1640,310' }, duration:9,  repeat:-1, yoyo:true, ease:'sine.inOut', delay:2 });
   gsap.to('#wl4', { attr:{ d:'M-200,410 Q360,350 720,380 T1640,390' }, duration:11, repeat:-1, yoyo:true, ease:'sine.inOut', delay:.5 });
   gsap.to('#wl5', { attr:{ d:'M-200,100 Q360,40  720,70  T1640,80'  }, duration:7,  repeat:-1, yoyo:true, ease:'sine.inOut', delay:3 });
 
-  /* ── Nav scroll ── */
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
 
-  /* ── Mobile menu ── */
   const navToggle   = document.getElementById('navToggle');
   const mobileMenu  = document.getElementById('mobileMenu');
   const menuOverlay = document.getElementById('menuOverlay');
@@ -749,7 +784,6 @@
   menuOverlay.addEventListener('click', closeMenu);
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-  /* ── Filter buttons ── */
   const filterBtns = document.querySelectorAll('.filter-btn');
   const allItems   = document.querySelectorAll('.gm-item');
 
@@ -759,8 +793,7 @@
       btn.classList.add('active');
       const filter = btn.dataset.filter;
       allItems.forEach(item => {
-        const cat = item.dataset.category;
-        if (filter === 'all' || cat === filter) {
+        if (filter === 'all' || item.dataset.category === filter) {
           item.classList.remove('hidden');
         } else {
           item.classList.add('hidden');
@@ -769,7 +802,6 @@
     });
   });
 
-  /* ── Gallery item appear on scroll (IntersectionObserver) ── */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -783,7 +815,6 @@
 
   allItems.forEach(item => observer.observe(item));
 
-  /* ── Lightbox ── */
   const lightbox  = document.getElementById('lightbox');
   const lbImg     = document.getElementById('lbImg');
   const lbCounter = document.getElementById('lbCounter');
@@ -835,14 +866,6 @@
     if (e.key === 'ArrowRight')  shiftLightbox(1);
   });
 
-  /* ── GSAP Reveals ── */
-  gsap.utils.toArray('.reveal-up').forEach(el => {
-    gsap.to(el, { opacity:1, y:0, duration:.9, ease:'power3.out',
-      scrollTrigger:{ trigger:el, start:'top 88%', toggleActions:'play none none none' }
-    });
-  });
-
-  /* ── Page hero entrance ── */
   gsap.fromTo('.page-hero-inner', { opacity:0, y:30 }, { opacity:1, y:0, duration:1.1, ease:'power3.out', delay:.2 });
 </script>
 </body>
