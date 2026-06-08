@@ -6,13 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Kiwi Pools UK | Premium Swimming Pool Services in Kent</title>
   <meta name="description" content="Kiwi Pools UK – Expert swimming pool servicing, refurbishment, equipment installation and automated dosing systems across Kent and the South East." />
+  <base href="/kiwipools/">
   <!-- Preload critical above-the-fold images -->
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/140a60f2272bbfd9f729c4a24dab51ed620f0224/kiwipools/img/main%20hero%20bg%20img.jpeg" />
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/main_logo_img.png" />
-  <!-- DNS prefetch for GitHub raw content -->
   <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
   <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -39,47 +38,17 @@
       --font-main:  'Plus Jakarta Sans', sans-serif;
     }
 
-    html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       font-family: var(--font-main);
       font-weight: 400;
       color: var(--text-dark);
       background: var(--white);
       overflow-x: hidden;
-      width: 100%;
-      position: relative;
+      max-width: 100vw;
     }
-    
-    /* PC WAVES - KEEP ORIGINAL */
-    .hero-wave-bottom {
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      right: 0;
-      line-height: 0;
-      z-index: 2;
-      width: 100%;
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .hero-wave-bottom svg { 
-      display: block; 
-      width: 100%; 
-      height: 110px;
-    }
-    .section-wave {
-      position: relative;
-      margin-bottom: -2px;
-      line-height: 0;
-      overflow: hidden;
-      width: 100%;
-    }
-    .section-wave svg {
-      display: block;
-      width: 100%;
-    }
+    body > * { overflow-x: hidden; max-width: 100vw; }
 
-    /* ─── NAVBAR ─── */
     nav {
       position: fixed; top:0; left:0; right:0; z-index:1000;
       display:flex; align-items:center; justify-content:space-between;
@@ -175,7 +144,6 @@
     }
     .mobile-menu-close:hover { background:rgba(255,255,255,.2); }
 
-    /* ─── HERO ─── */
     #hero {
       position:relative;
       height:100vh;
@@ -251,11 +219,20 @@
     .stat-num .accent { color:var(--teal); }
     .stat-label { font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.95); font-weight:700; text-shadow:0 1px 3px rgba(0,0,0,.4); }
 
+    .hero-wave-bottom {
+      position:absolute; bottom:-1px; left:0; right:0;
+      line-height:0; z-index:2; width:100%; overflow:hidden;
+      pointer-events:none;
+    }
+    .hero-wave-bottom svg { display:block; width:100%; height:110px; }
+
     .scroll-indicator { position:absolute; bottom:9rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:.5rem; font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.85); z-index:5; animation:fadeInUp 1s 2.5s both; }
     @keyframes fadeInUp { from{opacity:0;transform:translate(-50%,10px);} to{opacity:1;transform:translate(-50%,0);} }
     .scroll-line { width:1px; height:40px; background:linear-gradient(to bottom,var(--teal),rgba(255,255,255,.2)); animation:scrollPulse 2s ease-in-out infinite; }
     @keyframes scrollPulse { 0%,100%{opacity:1;} 50%{opacity:.3;} }
 
+    .section-wave { position:relative; margin-bottom:-2px; line-height:0; overflow:hidden; width:100%; }
+    .section-wave svg { display:block; width:100%; }
     @keyframes waveA {
       0%   { d:path("M0,35 C200,65 480,5  720,35 C960,65 1240,5  1440,35 L1440,80 L0,80 Z"); }
       50%  { d:path("M0,55 C200,15 480,70 720,45 C960,15 1240,65 1440,25 L1440,80 L0,80 Z"); }
@@ -299,7 +276,6 @@
     .service-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:rgba(17,113,184,.2); }
     .service-card:hover::after { transform:scaleX(1); }
     .service-icon-wrap { width:54px; height:54px; background:linear-gradient(135deg,var(--blue-light) 0%,rgba(13,199,224,.15) 100%); display:flex; align-items:center; justify-content:center; margin-bottom:1.6rem; border-radius:16px; }
-    .service-icon-wrap svg { color:var(--blue); }
     .service-card h3 { font-size:1.45rem; font-weight:700; color:var(--text-dark); margin-bottom:.8rem; }
     .service-card p { font-size:.82rem; color:var(--text-light); line-height:1.85; }
     .service-num { position:absolute; top:1.5rem; right:2rem; font-size:3.5rem; font-weight:700; color:rgba(17,113,184,.06); line-height:1; pointer-events:none; }
@@ -349,20 +325,10 @@
     #reviews { background:var(--white); overflow:hidden; }
     .reviews-inner { max-width:1280px; margin:0 auto; }
     .reviews-header { text-align:center; margin-bottom:2.5rem; }
-    .google-badge {
-      display:inline-flex; align-items:center; gap:.8rem;
-      background:linear-gradient(135deg,#1a73e8 0%,#0dc7e0 100%);
-      padding:.8rem 1.6rem; margin-bottom:1.4rem; border-radius:60px;
-      box-shadow:0 4px 20px rgba(26,115,232,.3);
-      white-space:nowrap;
-    }
+    .google-badge { display:inline-flex; align-items:center; gap:.8rem; background:linear-gradient(135deg,#1a73e8 0%,#0dc7e0 100%); padding:.8rem 1.6rem; margin-bottom:1.4rem; border-radius:60px; box-shadow:0 4px 20px rgba(26,115,232,.3); white-space:nowrap; }
     .google-badge .g-logo { width:22px; height:22px; flex-shrink:0; }
     .google-badge .g-text { font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#fff; white-space:nowrap; }
-    .overall-rating {
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:1rem; background:var(--blue-pale); border-radius:20px;
-      padding:1.2rem 2rem; border:1.5px solid rgba(17,113,184,.15);
-    }
+    .overall-rating { display:inline-flex; align-items:center; justify-content:center; gap:1rem; background:var(--blue-pale); border-radius:20px; padding:1.2rem 2rem; border:1.5px solid rgba(17,113,184,.15); }
     .overall-score { font-size:3.2rem; font-weight:700; color:var(--text-dark); line-height:1; }
     .stars-row { display:flex; gap:3px; margin-bottom:.3rem; }
     .star { color:#f9a825; font-size:1.1rem; }
@@ -439,55 +405,20 @@
     }
 
     @media (max-width:768px) {
-      html, body { overflow-x: hidden; width: 100%; }
+      html,body { overflow-x:hidden !important; }
       img,svg,video,iframe { max-width:100%; }
       .nav-center { display:none; }
       .nav-toggle  { display:flex; }
       .nav-quote-btn { display:none; }
       section { padding:3.5rem 5vw; }
-      
-      #hero {
-        height:auto;
-        min-height:100vh;
-        padding-bottom:0;
-      }
-      
-      .hero-stats {
-        padding:0 1.2rem 1rem;
-      }
+      #hero { height:auto; min-height:100vh; padding-bottom:0; }
+      .hero-stats { padding:0 1.2rem 1rem; }
       .stats-grid { grid-template-columns:repeat(3,1fr); gap:0.8rem; }
       .stat-num  { font-size:clamp(1.4rem,5vw,2rem); }
       .stat-label{ font-size:.52rem; letter-spacing:.1em; }
-      
-      /* Mobile waves - keep full width, no transform issues */
-      .hero-wave-bottom {
-        position: relative !important;
-        bottom: auto !important;
-        width: 100% !important;
-        left: auto !important;
-        right: auto !important;
-        margin-top: auto;
-        overflow-x: clip !important;
-      }
-      .hero-wave-bottom svg { 
-        width: 100% !important;
-        height: 90px;
-        display: block;
-      }
-      .section-wave {
-        position: relative;
-        width: 100% !important;
-        left: auto !important;
-        right: auto !important;
-        overflow-x: clip !important;
-        margin-bottom: -2px;
-      }
-      .section-wave svg {
-        width: 100% !important;
-        height: 65px;
-        display: block;
-      }
-      
+      .hero-wave-bottom { position:relative !important; bottom:auto !important; width:100%; margin-top:auto; line-height:0; overflow:hidden; }
+      .hero-wave-bottom svg { height:90px; }
+      .section-wave svg     { height:65px; }
       #about { grid-template-columns:1fr; gap:2rem; }
       .about-text    { order:1; }
       .about-img-wrap{ order:2; margin-top:3rem; }
@@ -497,27 +428,10 @@
       .services-grid   { grid-template-columns:1fr; }
       .process-grid { grid-template-columns:1fr; gap:2.5rem; }
       .comparison-slider { aspect-ratio:4/3; }
-      .gallery-strip {
-        display:flex !important;
-        overflow-x:auto;
-        gap:1rem;
-        padding-bottom:1rem;
-        scroll-snap-type:x mandatory;
-        -webkit-overflow-scrolling:touch;
-        scrollbar-width:none;
-      }
+      .gallery-strip { display:flex !important; overflow-x:auto; gap:1rem; padding-bottom:1rem; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
       .gallery-strip::-webkit-scrollbar { display:none; }
-      .gallery-strip .g-item {
-        flex:0 0 78vw;
-        max-width:78vw;
-        scroll-snap-align:start;
-      }
-      .gallery-dots-mobile {
-        display:flex !important;
-        justify-content:center;
-        gap:.6rem;
-        margin-top:1rem;
-      }
+      .gallery-strip .g-item { flex:0 0 78vw; max-width:78vw; scroll-snap-align:start; }
+      .gallery-dots-mobile { display:flex !important; justify-content:center; gap:.6rem; margin-top:1rem; }
       .gallery-dot { width:7px; height:7px; border-radius:50%; background:rgba(17,113,184,.3); cursor:pointer; transition:all .3s; }
       .gallery-dot.active { background:var(--blue); width:24px; border-radius:20px; }
       .review-card { width:300px; padding:1.5rem; }
@@ -536,19 +450,9 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="navbar">
   <a href="index.html" class="nav-logo"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/main_logo_img.png" alt="Kiwi Pools UK Ltd Logo" /></a>
-  <div class="nav-center">
-    <ul class="nav-links">
-      <li><a href="#about-wrap">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process-wrap">Our Process</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
+  <div class="nav-center"><ul class="nav-links"><li><a href="#about-wrap">About</a></li><li><a href="#services">Services</a></li><li><a href="#process-wrap">Our Process</a></li><li><a href="#reviews">Reviews</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="#contact">Contact</a></li></ul></div>
   <div class="nav-right">
     <a href="https://www.facebook.com/KiwiPoolsUK" class="nav-icon-link" target="_blank"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
     <a href="https://www.instagram.com/kiwipoolsuk" class="nav-icon-link" target="_blank"><svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
@@ -557,442 +461,165 @@
     <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
   </div>
 </nav>
-
 <div class="mobile-menu-overlay" id="menuOverlay"></div>
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu-close" id="mobileClose">✕</button>
-  <a href="#about-wrap">About</a>
-  <a href="#services">Services</a>
-  <a href="#process-wrap">Our Process</a>
-  <a href="#reviews">Reviews</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="#contact" class="mobile-menu-cta">Get a Free Quote</a>
-</div>
+<div class="mobile-menu" id="mobileMenu"><button class="mobile-menu-close" id="mobileClose">✕</button><a href="#about-wrap">About</a><a href="#services">Services</a><a href="#process-wrap">Our Process</a><a href="#reviews">Reviews</a><a href="gallery.html">Gallery</a><a href="#contact" class="mobile-menu-cta">Get a Free Quote</a></div>
 
-<!-- HERO -->
 <section id="hero">
   <img class="hero-bg-img" src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/140a60f2272bbfd9f729c4a24dab51ed620f0224/kiwipools/img/main%20hero%20bg%20img.jpeg" alt="Luxury swimming pool" fetchpriority="high" decoding="async" />
   <div class="hero-overlay"></div>
   <div class="hero-circle hc-1"></div><div class="hero-circle hc-2"></div><div class="hero-circle hc-3"></div>
-
   <div class="hero-main-content">
     <div class="hero-eyebrow"><span></span>Premium Pool Services · Kent &amp; South East UK<span></span></div>
     <h1 class="hero-title">Your Pool, <span class="gold-em">Perfectly Crafted.</span></h1>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Get a Free Quote</a>
-      <a href="#services" class="btn-outline">Explore Services</a>
-    </div>
+    <div class="hero-actions"><a href="#contact" class="btn-primary">Get a Free Quote</a><a href="#services" class="btn-outline">Explore Services</a></div>
   </div>
-
-  <div class="hero-stats" id="heroStats">
-    <div class="stats-grid">
-      <div class="stat-item"><div class="stat-num"><span class="accent stat-counter" data-target="15">0</span>+</div><div class="stat-label">Years Experience</div></div>
-      <div class="stat-item"><div class="stat-num"><span class="accent stat-counter" data-target="500">0</span>+</div><div class="stat-label">Pools Serviced</div></div>
-      <div class="stat-item"><div class="stat-num"><span class="accent stat-counter" data-target="100">0</span>%</div><div class="stat-label">Client Satisfaction</div></div>
-    </div>
-  </div>
-
+  <div class="hero-stats" id="heroStats"><div class="stats-grid"><div class="stat-item"><div class="stat-num"><span class="accent stat-counter" data-target="15">0</span>+</div><div class="stat-label">Years Experience</div></div><div class="stat-item"><div class="stat-num"><span class="accent stat-counter" data-target="500">0</span>+</div><div class="stat-label">Pools Serviced</div></div><div class="stat-item"><div class="stat-num"><span class="accent stat-counter" data-target="100">0</span>%</div><div class="stat-label">Client Satisfaction</div></div></div></div>
   <div class="scroll-indicator"><div class="scroll-line"></div>Scroll</div>
-
-  <div class="hero-wave-bottom">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-      <path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--off-white)"/>
-      <path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--off-white)"/>
-    </svg>
-  </div>
+  <div class="hero-wave-bottom"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--off-white)"/><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--off-white)"/></svg></div>
 </section>
 
-<!-- ABOUT -->
-<section id="about-wrap"><div id="about">
-  <div class="about-img-wrap reveal-left">
-    <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/Our%20Vision.webp" alt="Our Vision" loading="lazy" decoding="async" />
-    <div class="about-badge"><span class="badge-num">15+</span><span class="badge-txt">Years of Excellence</span></div>
-  </div>
-  <div class="about-text reveal-right">
-    <div class="section-tag">Our Vision</div>
-    <h2 class="section-title">Redefining What<br><em>Pool Care</em> Means</h2>
-    <p>At Kiwi Pools UK, our vision is to set the standard for modern, dependable, and high-quality pool care. We combine cutting-edge water testing technology with decades of hands-on expertise to deliver pools that are cleaner, safer, and more efficient.</p>
-    <p>Through skilled refurbishment, smart equipment upgrades, and advanced automated dosing systems, we create pools that are effortless to own and a joy to use — year after year.</p>
-    <div class="feature-pills">
-      <div class="pill">Digital Water Testing</div><div class="pill">Liner Installation</div>
-      <div class="pill">Bayrol Certified</div><div class="pill">Smart Dosing</div>
-      <div class="pill">Pump &amp; Heater Install</div>
-    </div>
-  </div>
-</div></section>
+<section id="about-wrap"><div id="about"><div class="about-img-wrap reveal-left"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/Our%20Vision.webp" alt="Our Vision" loading="lazy" decoding="async" /><div class="about-badge"><span class="badge-num">15+</span><span class="badge-txt">Years of Excellence</span></div></div><div class="about-text reveal-right"><div class="section-tag">Our Vision</div><h2 class="section-title">Redefining What<br><em>Pool Care</em> Means</h2><p>At Kiwi Pools UK, our vision is to set the standard for modern, dependable, and high-quality pool care. We combine cutting-edge water testing technology with decades of hands-on expertise to deliver pools that are cleaner, safer, and more efficient.</p><p>Through skilled refurbishment, smart equipment upgrades, and advanced automated dosing systems, we create pools that are effortless to own and a joy to use — year after year.</p><div class="feature-pills"><div class="pill">Digital Water Testing</div><div class="pill">Liner Installation</div><div class="pill">Bayrol Certified</div><div class="pill">Smart Dosing</div><div class="pill">Pump &amp; Heater Install</div></div></div></div></section>
 
 <div class="section-wave" style="background:var(--off-white);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--blue-pale)"/><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--blue-pale)"/></svg></div>
 
-<!-- SERVICES -->
-<section id="services"><div class="services-inner">
-  <div class="services-header">
-    <div class="reveal-left"><div class="section-tag">What We Offer</div><h2 class="section-title">Complete Pool<br><em>Services</em></h2></div>
-    <div class="reveal-right"><p class="section-body">From routine maintenance to complete overhauls — we deliver precision, reliability, and craftsmanship across every aspect of pool care.</p></div>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal-up"><div class="service-num">01</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Pool Servicing</h3><p>State-of-the-art digital water testing and comprehensive maintenance visits to keep your pool crystal clear and perfectly balanced.</p></div>
-    <div class="service-card reveal-up"><div class="service-num">02</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Refurbishment</h3><p>Complete onsite liner installations plus a full range of safety, slatted and solar covers to restore your pool to showroom condition.</p></div>
-    <div class="service-card reveal-up"><div class="service-num">03</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4"/></svg></div><h3>Heater &amp; Pump Install</h3><p>Expert installation and replacement of pumps, heaters and filtration equipment to improve efficiency and eliminate recurring issues.</p></div>
-    <div class="service-card reveal-up"><div class="service-num">04</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Automated Dosing</h3><p>As certified Bayrol specialists, we install advanced chlorine and salt dosing systems for effortless, precise water treatment.</p></div>
-    <div class="service-card reveal-up"><div class="service-num">05</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Safety Covers</h3><p>Full selection of high-quality safety, slatted and solar covers to enhance appearance, functionality and safety.</p></div>
-    <div class="service-card reveal-up"><div class="service-num">06</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2"/></svg></div><h3>Tailored Service Plans</h3><p>Personalised maintenance schedules designed around your pool's unique requirements, goals and seasonal demands.</p></div>
-  </div>
-</div></section>
+<section id="services"><div class="services-inner"><div class="services-header"><div class="reveal-left"><div class="section-tag">What We Offer</div><h2 class="section-title">Complete Pool<br><em>Services</em></h2></div><div class="reveal-right"><p class="section-body">From routine maintenance to complete overhauls — we deliver precision, reliability, and craftsmanship across every aspect of pool care.</p></div></div><div class="services-grid"><div class="service-card reveal-up"><div class="service-num">01</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Pool Servicing</h3><p>State-of-the-art digital water testing and comprehensive maintenance visits.</p></div><div class="service-card reveal-up"><div class="service-num">02</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Refurbishment</h3><p>Complete onsite liner installations plus safety, slatted and solar covers.</p></div><div class="service-card reveal-up"><div class="service-num">03</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4"/></svg></div><h3>Heater &amp; Pump Install</h3><p>Expert installation of pumps, heaters and filtration equipment.</p></div><div class="service-card reveal-up"><div class="service-num">04</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Automated Dosing</h3><p>Certified Bayrol specialists, install advanced chlorine & salt dosing systems.</p></div><div class="service-card reveal-up"><div class="service-num">05</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Safety Covers</h3><p>High-quality safety, slatted and solar covers for functionality.</p></div><div class="service-card reveal-up"><div class="service-num">06</div><div class="service-icon-wrap"><svg width="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2"/></svg></div><h3>Tailored Service Plans</h3><p>Personalised maintenance schedules around your pool's needs.</p></div></div></div></section>
 
 <div class="section-wave" style="background:var(--blue-pale);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--white)"/><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--white)"/></svg></div>
 
-<!-- PROCESS -->
-<section id="process-wrap"><div id="process">
-  <div class="reveal-up" style="text-align:center">
-    <div class="section-tag" style="justify-content:center;">How It Works</div>
-    <h2 class="section-title">Our <em>Process</em></h2>
-  </div>
-  <div class="process-grid">
-    <div class="process-img reveal-left">
-      <div class="comparison-slider" id="compSlider">
-        <img class="img-after"  src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/94ec5515f5b87f47a90fbcde7990fe39eb364849/kiwipools/img/landing%20page%20img/tran%20green%20.jpeg" alt="After" loading="lazy" decoding="async" />
-        <img class="img-before" src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/94ec5515f5b87f47a90fbcde7990fe39eb364849/kiwipools/img/landing%20page%20img/tran%20blue%20org.jpg" alt="Before" loading="lazy" decoding="async" />
-        <div class="comparison-handle" id="compHandle"></div>
-        <span class="comparison-label label-before">Before</span>
-        <span class="comparison-label label-after">After</span>
-      </div>
-    </div>
-    <div class="process-steps">
-      <div class="step"><div class="step-num">01</div><div class="step-body"><h4>Personal Site Visit</h4><p>We begin with a hands-on visit to your pool, assessing its condition and understanding your specific goals and challenges.</p></div></div>
-      <div class="step"><div class="step-num">02</div><div class="step-body"><h4>Tailored Service Plan</h4><p>We design a plan specifically for your pool — whether it's routine servicing, refurbishment, equipment upgrades or dosing solutions.</p></div></div>
-      <div class="step"><div class="step-num">03</div><div class="step-body"><h4>Expert Delivery</h4><p>Our team carries out the work with precision, using top-quality equipment and materials to deliver outstanding results.</p></div></div>
-      <div class="step"><div class="step-num">04</div><div class="step-body"><h4>Ongoing Support</h4><p>We stay with you year-round. Transparent communication and follow-up care ensure your pool always performs at its best.</p></div></div>
-    </div>
-  </div>
-</div></section>
+<section id="process-wrap"><div id="process"><div class="reveal-up" style="text-align:center"><div class="section-tag" style="justify-content:center;">How It Works</div><h2 class="section-title">Our <em>Process</em></h2></div><div class="process-grid"><div class="process-img reveal-left"><div class="comparison-slider" id="compSlider"><img class="img-after" src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/94ec5515f5b87f47a90fbcde7990fe39eb364849/kiwipools/img/landing%20page%20img/tran%20blue%20org.jpg" alt="After"><img class="img-before" src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/94ec5515f5b87f47a90fbcde7990fe39eb364849/kiwipools/img/landing%20page%20img/tran%20green%20.jpeg" alt="Before"><div class="comparison-handle" id="compHandle"></div><span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span></div></div><div class="process-steps"><div class="step"><div class="step-num">01</div><div class="step-body"><h4>Personal Site Visit</h4><p>Hands-on visit to assess your pool and understand your goals.</p></div></div><div class="step"><div class="step-num">02</div><div class="step-body"><h4>Tailored Service Plan</h4><p>Design a plan for routine, refurbishment or dosing solutions.</p></div></div><div class="step"><div class="step-num">03</div><div class="step-body"><h4>Expert Delivery</h4><p>Carry out work with precision and top-quality materials.</p></div></div><div class="step"><div class="step-num">04</div><div class="step-body"><h4>Ongoing Support</h4><p>Transparent communication and follow-up care.</p></div></div></div></div></div></section>
 
 <div class="section-wave" style="background:var(--white);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--blue-pale)"/><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--blue-pale)"/></svg></div>
 
-<!-- GALLERY -->
-<section id="gallery-teaser"><div class="gallery-inner">
-  <div class="gallery-header">
-    <div class="section-tag" style="justify-content:center;">Recent Work</div>
-    <h2 class="section-title">A Fraction of <em>What We've Done</em></h2>
-  </div>
-  <div class="gallery-strip" id="galleryStrip">
-    <div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/S1.webp" alt="Pool" loading="lazy" decoding="async" /><div class="g-overlay"><span>View Project →</span></div></div>
-    <div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/s2.webp" alt="Pool" loading="lazy" decoding="async" /><div class="g-overlay"><span>View Project →</span></div></div>
-    <div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/s3.webp" alt="Pool" loading="lazy" decoding="async" /><div class="g-overlay"><span>View Project →</span></div></div>
-    <div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/s4.webp" alt="Pool" loading="lazy" decoding="async" /><div class="g-overlay"><span>View Project →</span></div></div>
-    <div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g7.webp" alt="Pool" loading="lazy" decoding="async" /><div class="g-overlay"><span>View Project →</span></div></div>
-    <div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/s5.webp" alt="Pool" loading="lazy" decoding="async" /><div class="g-overlay"><span>View Project →</span></div></div>
-  </div>
-  <div class="gallery-dots-mobile" id="galleryDots"></div>
-  <div class="gallery-cta"><a href="gallery.html" class="btn-outline">View Full Gallery</a></div>
-</div></section>
+<section id="gallery-teaser"><div class="gallery-inner"><div class="gallery-header"><div class="section-tag" style="justify-content:center;">Recent Work</div><h2 class="section-title">A Fraction of <em>What We've Done</em></h2></div><div class="gallery-strip" id="galleryStrip"><div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/S1.webp" alt="Pool" loading="lazy"><div class="g-overlay"><span>View Project →</span></div></div><div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/s2.webp" alt="Pool" loading="lazy"><div class="g-overlay"><span>View Project →</span></div></div><div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/s3.webp" alt="Pool" loading="lazy"><div class="g-overlay"><span>View Project →</span></div></div><div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/s4.webp" alt="Pool" loading="lazy"><div class="g-overlay"><span>View Project →</span></div></div><div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/gallery/g7.webp" alt="Pool" loading="lazy"><div class="g-overlay"><span>View Project →</span></div></div><div class="g-item"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/landing%20page%20img/s5.webp" alt="Pool" loading="lazy"><div class="g-overlay"><span>View Project →</span></div></div></div><div class="gallery-dots-mobile" id="galleryDots"></div><div class="gallery-cta"><a href="gallery.html" class="btn-outline">View Full Gallery</a></div></div></section>
 
 <div class="section-wave" style="background:var(--blue-pale);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--white)"/><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--white)"/></svg></div>
 
-<!-- REVIEWS -->
-<section id="reviews"><div class="reviews-inner">
-  <div class="reviews-header reveal-up">
-    <div class="google-badge">
-      <svg class="g-logo" viewBox="0 0 24 24" width="22" height="22"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#fff" opacity=".9"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#fff" opacity=".9"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#fff" opacity=".9"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#fff" opacity=".9"/></svg>
-      <span class="g-text">Google Reviews</span>
-    </div>
-    <div class="overall-rating">
-      <span class="overall-score">5.0</span>
-      <div><div class="stars-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="rating-count">Based on 48 Google Reviews</div></div>
-    </div>
-  </div>
-  <div class="reviews-scroll-container" id="scrollContainer">
-    <div class="reviews-horizontal" id="reviewsHorizontal">
-      <div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"Cam is absolutely fantastic. Our pool has never looked better — always on time, incredibly professional."</p><div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">Sarah M.</div><div class="review-date">Sevenoaks, Kent</div></div></div></div>
-      <div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"Brilliant service from start to finish. Cam fitted a new liner and automated dosing system — the difference is night and day."</p><div class="review-author"><div class="review-avatar">J</div><div><div class="review-name">James T.</div><div class="review-date">Tunbridge Wells</div></div></div></div>
-      <div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"I've used Kiwi Pools for 3 years now and wouldn't use anyone else. The pool is always immaculate."</p><div class="review-author"><div class="review-avatar">R</div><div><div class="review-name">Rachel H.</div><div class="review-date">Maidstone</div></div></div></div>
-      <div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"Exceptional attention to detail. Kiwi Pools transformed our aging pool into a modern oasis. Punctual, courteous, results speak for themselves."</p><div class="review-author"><div class="review-avatar">M</div><div><div class="review-name">Mark & Lisa W.</div><div class="review-date">Canterbury, Kent</div></div></div></div>
-      <div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"Persistent algae gone since they installed the dosing system. Now crystal clear — maintenance is a breeze!"</p><div class="review-author"><div class="review-avatar">E</div><div><div class="review-name">Emma L.</div><div class="review-date">Royal Tunbridge Wells</div></div></div></div>
-      <div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"From quote to heat pump installation — seamless. Cam's expertise saved us money and improved efficiency dramatically."</p><div class="review-author"><div class="review-avatar">D</div><div><div class="review-name">David P.</div><div class="review-date">Sevenoaks, Kent</div></div></div></div>
-    </div>
-  </div>
-  <div class="reviews-dots" id="reviewsDots"></div>
-  <div class="google-cta reveal-up">
-    <a href="#" class="google-review-btn"><svg width="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Read All Reviews</a>
-    <a href="#" class="btn-primary" style="display:inline-flex;align-items:center;gap:.6rem;">Leave a Review</a>
-  </div>
-</div></section>
+<section id="reviews"><div class="reviews-inner"><div class="reviews-header reveal-up"><div class="google-badge"><svg class="g-logo" viewBox="0 0 24 24" width="22" height="22"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#fff" opacity=".9"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#fff" opacity=".9"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#fff" opacity=".9"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#fff" opacity=".9"/></svg><span class="g-text">Google Reviews</span></div><div class="overall-rating"><span class="overall-score">5.0</span><div><div class="stars-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="rating-count">Based on 48 Google Reviews</div></div></div></div><div class="reviews-scroll-container" id="scrollContainer"><div class="reviews-horizontal" id="reviewsHorizontal"><div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"Cam is absolutely fantastic. Our pool has never looked better — always on time, incredibly professional."</p><div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">Sarah M.</div><div class="review-date">Sevenoaks, Kent</div></div></div></div><div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"Brilliant service from start to finish. Cam fitted a new liner and automated dosing system — the difference is night and day."</p><div class="review-author"><div class="review-avatar">J</div><div><div class="review-name">James T.</div><div class="review-date">Tunbridge Wells</div></div></div></div><div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"I've used Kiwi Pools for 3 years now and wouldn't use anyone else. The pool is always immaculate."</p><div class="review-author"><div class="review-avatar">R</div><div><div class="review-name">Rachel H.</div><div class="review-date">Maidstone</div></div></div></div><div class="review-card"><div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="review-text">"Exceptional attention to detail. Kiwi Pools transformed our aging pool."</p><div class="review-author"><div class="review-avatar">M</div><div><div class="review-name">Mark & Lisa W.</div><div class="review-date">Canterbury</div></div></div></div></div></div><div class="reviews-dots" id="reviewsDots"></div><div class="google-cta reveal-up"><a href="#" class="google-review-btn"><svg width="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Read All Reviews</a><a href="#" class="btn-primary" style="display:inline-flex;align-items:center;gap:.6rem;">Leave a Review</a></div></div></section>
 
 <div class="section-wave" style="background:var(--white);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--blue-dark)"/><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--blue-dark)"/></svg></div>
 
-<!-- TESTIMONIAL -->
-<section id="testimonial"><div>
-  <span class="quote-mark">"</span>
-  <p class="testimonial-text">Cam and the team at Kiwi Pools are simply outstanding. Our pool has never looked better — efficient, crystal clear, and beautifully maintained. Truly the best in Kent.</p>
-  <p class="testimonial-author">— Satisfied Customer, Sevenoaks, Kent</p>
-</div></section>
+<section id="testimonial"><div><span class="quote-mark">"</span><p class="testimonial-text">Cam and the team at Kiwi Pools are simply outstanding. Our pool has never looked better — efficient, crystal clear, and beautifully maintained. Truly the best in Kent.</p><p class="testimonial-author">— Satisfied Customer, Sevenoaks, Kent</p></div></section>
 
 <div class="section-wave" style="background:var(--blue-dark);"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px;"><path class="wa" d="M0,35 C200,65 480,5 720,35 C960,65 1240,5 1440,35 L1440,80 L0,80 Z" fill="var(--off-white)"/><path class="wb" d="M0,50 C300,15 700,70 1000,40 C1200,20 1360,60 1440,40 L1440,80 L0,80 Z" fill="var(--off-white)"/></svg></div>
 
-<!-- CONTACT -->
-<section id="contact"><div class="contact-inner">
-  <div class="contact-info">
-    <div class="section-tag">Get In Touch</div>
-    <h2 class="section-title">Let's Talk<br><em>About Your Pool</em></h2>
-    <p>Send us a message or call for a free, no-obligation quote. Tell us about your pool and what you need, and we'll tailor a solution to fit.</p>
-    <div class="contact-detail"><div class="contact-icon">📞</div><div class="contact-detail-text"><strong>07831 685 649</strong><span>Call or text anytime</span></div></div>
-    <div class="contact-detail"><div class="contact-icon">✉️</div><div class="contact-detail-text"><strong>info@kiwipools.co.uk</strong><span>We respond within 24 hours</span></div></div>
-    <div class="contact-detail"><div class="contact-icon">📍</div><div class="contact-detail-text"><strong>Kent &amp; South East, UK</strong><span>Serving the wider region</span></div></div>
-    <div class="hours-block">
-      <h4>Opening Hours</h4>
-      <div class="hours-row active"><span>Monday – Friday</span><span>9am – 5pm</span></div>
-      <div class="hours-row"><span>Saturday</span><span>By Appointment</span></div>
-      <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
-    </div>
-  </div>
-  <div>
-    <form class="contact-form" id="contactForm">
-      <div class="form-row">
-        <div class="form-group"><label>Full Name *</label><input type="text" id="fullName" placeholder="John Smith" required /></div>
-        <div class="form-group"><label>Phone *</label><input type="tel" id="phone" placeholder="07700 000 000" required /></div>
-      </div>
-      <div class="form-group"><label>Email Address *</label><input type="email" id="email" placeholder="john@example.com" required /></div>
-      <div class="form-group"><label>Postcode *</label><input type="text" id="postcode" placeholder="e.g. TN1 2AB" required /></div>
-      <div class="form-group"><label>Service Required</label><select id="service">
-        <option>Pool Servicing</option>
-        <option>Refurbishment</option>
-        <option>Heater / Pump Installation</option>
-        <option>Automated Dosing System</option>
-        <option>Safety Cover</option>
-        <option>General Enquiry</option>
-      </select></div>
-      <div class="form-group"><label>Message</label><textarea id="message" rows="3" placeholder="Tell us about your pool and what you need..."></textarea></div>
-      <button type="submit" class="form-submit" id="submitBtn">Send Enquiry →</button>
-    </form>
-  </div>
-</div></section>
+<section id="contact"><div class="contact-inner"><div class="contact-info"><div class="section-tag">Get In Touch</div><h2 class="section-title">Let's Talk<br><em>About Your Pool</em></h2><p>Send us a message or call for a free, no-obligation quote.</p><div class="contact-detail"><div class="contact-icon">📞</div><div class="contact-detail-text"><strong>07831 685 649</strong><span>Call or text anytime</span></div></div><div class="contact-detail"><div class="contact-icon">✉️</div><div class="contact-detail-text"><strong>info@kiwipools.co.uk</strong><span>We respond within 24 hours</span></div></div><div class="contact-detail"><div class="contact-icon">📍</div><div class="contact-detail-text"><strong>Kent &amp; South East, UK</strong><span>Serving the wider region</span></div></div><div class="hours-block"><h4>Opening Hours</h4><div class="hours-row active"><span>Monday – Friday</span><span>9am – 5pm</span></div><div class="hours-row"><span>Saturday</span><span>By Appointment</span></div><div class="hours-row"><span>Sunday</span><span>Closed</span></div></div></div><div><form class="contact-form" id="contactForm"><div class="form-row"><div class="form-group"><label>Full Name *</label><input type="text" id="fullName" placeholder="John Smith" required /></div><div class="form-group"><label>Phone *</label><input type="tel" id="phone" placeholder="07700 000 000" required /></div></div><div class="form-group"><label>Email Address *</label><input type="email" id="email" placeholder="john@example.com" required /></div><div class="form-group"><label>Postcode *</label><input type="text" id="postcode" placeholder="e.g. TN1 2AB" required /></div><div class="form-group"><label>Service Required</label><select id="service"><option>Pool Servicing</option><option>Refurbishment</option><option>Heater / Pump Installation</option><option>Automated Dosing System</option><option>Safety Cover</option><option>General Enquiry</option></select></div><div class="form-group"><label>Message</label><textarea id="message" rows="3" placeholder="Tell us about your pool and what you need..."></textarea></div><button type="submit" class="form-submit">Send Enquiry →</button></form></div></div></section>
 
-<!-- FOOTER -->
-<footer><div class="footer-grid">
-  <div class="footer-brand">
-    <img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/main_logo_img.png" alt="Kiwi Pools UK Ltd" />
-    <p>Setting the standard for modern, dependable pool care across Kent and the South East. Expert craftsmanship, every step of the way.</p>
-    <div class="footer-bayrol"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/734e699fb1ea026a4c373ce4fc4fa7bfacc04c4e/kiwipools/img/Bayrol_Logo-removebg-preview.png" alt="Bayrol" /><span>Bayrol Certified Specialists</span></div>
-    <div class="footer-social"><a href="https://www.facebook.com/KiwiPoolsUK" class="social-link" target="_blank">f</a><a href="https://www.instagram.com/kiwipoolsuk" class="social-link" target="_blank">ig</a></div>
-  </div>
-  <div class="footer-col"><h5>Services</h5><ul><li><a href="#services">Pool Servicing</a></li><li><a href="#services">Refurbishment</a></li><li><a href="#services">Heater &amp; Pump Install</a></li><li><a href="#services">Automated Dosing</a></li><li><a href="#services">Safety Covers</a></li></ul></div>
-  <div class="footer-col"><h5>Company</h5><ul><li><a href="#about-wrap">About Us</a></li><li><a href="#process-wrap">Our Process</a></li><li><a href="#reviews">Reviews</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="#contact">Contact</a></li></ul></div>
-  <div class="footer-col"><h5>Contact</h5><ul><li><a href="tel:07831685649">07831 685 649</a></li><li><a href="mailto:info@kiwipools.co.uk">info@kiwipools.co.uk</a></li><li><a href="#">Kent &amp; South East, UK</a></li></ul></div>
-</div><div class="footer-bottom"><p>© 2025 Kiwi Pools UK Ltd. All rights reserved.</p><a href="#">Privacy Policy</a></div></footer>
+<footer><div class="footer-grid"><div class="footer-brand"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/main/kiwipools/img/main_logo_img.png" alt="Kiwi Pools UK Ltd" /><p>Setting the standard for modern, dependable pool care across Kent and the South East.</p><div class="footer-bayrol"><img src="https://raw.githubusercontent.com/gtwebstudio101-pixel/kiwipools/734e699fb1ea026a4c373ce4fc4fa7bfacc04c4e/kiwipools/img/Bayrol_Logo-removebg-preview.png" alt="Bayrol" /><span>Bayrol Certified Specialists</span></div><div class="footer-social"><a href="https://www.facebook.com/KiwiPoolsUK" class="social-link" target="_blank">f</a><a href="https://www.instagram.com/kiwipoolsuk" class="social-link" target="_blank">ig</a></div></div><div class="footer-col"><h5>Services</h5><ul><li><a href="#services">Pool Servicing</a></li><li><a href="#services">Refurbishment</a></li><li><a href="#services">Heater &amp; Pump Install</a></li><li><a href="#services">Automated Dosing</a></li><li><a href="#services">Safety Covers</a></li></ul></div><div class="footer-col"><h5>Company</h5><ul><li><a href="#about-wrap">About Us</a></li><li><a href="#process-wrap">Our Process</a></li><li><a href="#reviews">Reviews</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="#contact">Contact</a></li></ul></div><div class="footer-col"><h5>Contact</h5><ul><li><a href="tel:07831685649">07831 685 649</a></li><li><a href="mailto:info@kiwipools.co.uk">info@kiwipools.co.uk</a></li><li><a href="#">Kent &amp; South East, UK</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 Kiwi Pools UK Ltd. All rights reserved.</p><a href="#">Privacy Policy</a></div></footer>
 
 <script>
-  /* ── Navbar ── */
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
-
-  /* ── Mobile menu ── */
-  const toggle   = document.getElementById('navToggle');
-  const menu     = document.getElementById('mobileMenu');
-  const overlay  = document.getElementById('menuOverlay');
-  const closeBtn = document.getElementById('mobileClose');
-
-  function openMenu() {
-    menu.classList.add('open');
-    overlay.classList.add('open');
-    toggle.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMenu() {
-    menu.classList.remove('open');
-    overlay.classList.remove('open');
-    toggle.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  toggle?.addEventListener('click', () => menu.classList.contains('open') ? closeMenu() : openMenu());
-  closeBtn?.addEventListener('click', closeMenu);
-  overlay?.addEventListener('click', closeMenu);
-  document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', closeMenu));
-
-  /* ── GSAP animations ── */
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.timeline()
-    .to('.hero-eyebrow', { opacity:1, y:0, duration:.9 }, .3)
-    .to('.hero-title',   { opacity:1, y:0, duration:1  }, .5)
-    .to('.hero-actions', { opacity:1, y:0, duration:.8 }, .95);
-  gsap.to('#heroStats', { opacity:1, y:0, duration:1, delay:1.2 });
-  gsap.utils.toArray('.reveal-up').forEach(el   => gsap.to(el, { opacity:1, y:0, duration:.9, scrollTrigger:{ trigger:el, start:'top 88%' }}));
-  gsap.utils.toArray('.reveal-left').forEach(el => gsap.to(el, { opacity:1, x:0, duration:1,  scrollTrigger:{ trigger:el, start:'top 85%' }}));
-  gsap.utils.toArray('.reveal-right').forEach(el=> gsap.to(el, { opacity:1, x:0, duration:1,  scrollTrigger:{ trigger:el, start:'top 85%' }}));
-  gsap.utils.toArray('.step').forEach((step,i)  => gsap.to(step, { opacity:1, x:0, duration:.75, delay:i*.12, scrollTrigger:{ trigger:'.process-steps', start:'top 80%' }}));
-
-  /* ── Number counter ── */
-  function animateNumbers() {
-    document.querySelectorAll('.stat-counter').forEach(counter => {
-      const target = parseInt(counter.dataset.target);
-      let current = 0;
-      const step = target / 50;
-      (function tick() {
-        current += step;
-        if (current < target) { counter.textContent = Math.floor(current); requestAnimationFrame(tick); }
-        else counter.textContent = target;
-      })();
-    });
-  }
-  new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) { animateNumbers(); }
-  }, { threshold: 0.3 }).observe(document.getElementById('heroStats'));
-
-  /* ── Reviews scroll + dots ── */
-  const scrollCont = document.getElementById('scrollContainer');
-  const revHoriz   = document.getElementById('reviewsHorizontal');
-  const dotsWrap   = document.getElementById('reviewsDots');
-  let rCards = [];
-  function initRDots() {
-    if (!revHoriz) return;
-    rCards = [...revHoriz.querySelectorAll('.review-card')];
-    dotsWrap.innerHTML = '';
-    rCards.forEach((_, i) => {
-      const d = document.createElement('div'); d.className = 'dot'; if (i===0) d.classList.add('active');
-      d.addEventListener('click', () => { scrollCont.scrollTo({ left: i*(rCards[0].offsetWidth+32), behavior:'smooth' }); });
-      dotsWrap.appendChild(d);
-    });
-  }
-  if (scrollCont) {
-    initRDots();
-    scrollCont.addEventListener('scroll', () => {
-      if (!rCards.length) return;
-      const idx = Math.round(scrollCont.scrollLeft / (rCards[0].offsetWidth+32));
-      dotsWrap.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===idx));
-    });
-    window.addEventListener('resize', initRDots);
-    let isDown=false, startX, sl;
-    scrollCont.addEventListener('mousedown', e => { isDown=true; scrollCont.style.cursor='grabbing'; startX=e.pageX-scrollCont.offsetLeft; sl=scrollCont.scrollLeft; });
-    scrollCont.addEventListener('mouseleave', () => { isDown=false; scrollCont.style.cursor='grab'; });
-    scrollCont.addEventListener('mouseup',    () => { isDown=false; scrollCont.style.cursor='grab'; });
-    scrollCont.addEventListener('mousemove',  e => { if(!isDown) return; e.preventDefault(); scrollCont.scrollLeft = sl-(e.pageX-scrollCont.offsetLeft-startX)*1.5; });
-    scrollCont.style.cursor='grab';
-  }
-
-  /* ── Before/After slider ── */
-  (function(){
-    const slider = document.getElementById('compSlider');
-    const handle = document.getElementById('compHandle');
-    if (!slider) return;
-    const imgBefore = slider.querySelector('.img-before');
-    let active = false;
-
-    function setPos(clientX) {
-      const rect = slider.getBoundingClientRect();
-      let pct = Math.min(Math.max((clientX - rect.left) / rect.width, 0.02), 0.98);
-      handle.style.left = (pct*100).toFixed(2)+'%';
-      imgBefore.style.clipPath = 'inset(0 '+((1-pct)*100).toFixed(2)+'% 0 0)';
-    }
-
-    setTimeout(() => setPos(slider.getBoundingClientRect().left + slider.offsetWidth*0.5), 400);
-
-    slider.addEventListener('mousedown', e => { active=true; setPos(e.clientX); e.preventDefault(); });
-    window.addEventListener('mousemove', e => { if(active) setPos(e.clientX); });
-    window.addEventListener('mouseup',   () => { active=false; });
-    slider.addEventListener('touchstart', e => { active = true; setPos(e.touches[0].clientX); }, { passive: true });
-    slider.addEventListener('touchmove', e => { if (!active) return; e.preventDefault(); setPos(e.touches[0].clientX); }, { passive: false });
-    window.addEventListener('touchend', () => { active=false; });
-  })();
-
-  /* ── Gallery mobile dots ── */
-  (function(){
-    const strip = document.getElementById('galleryStrip');
-    const dw    = document.getElementById('galleryDots');
-    if (!strip||!dw) return;
-    const items = [...strip.querySelectorAll('.g-item')];
-    function build() {
-      if (window.innerWidth > 768) { dw.innerHTML=''; return; }
-      dw.innerHTML='';
-      items.forEach((_,i) => {
-        const d = document.createElement('div'); d.className='gallery-dot'; if(i===0) d.classList.add('active');
-        d.addEventListener('click', () => strip.scrollTo({ left:i*(items[0].offsetWidth+16), behavior:'smooth' }));
-        dw.appendChild(d);
+  (function() {
+    // ---------- Navbar, mobile, GSAP, slider, gallery dots, reviews ----------
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+    const toggle = document.getElementById('navToggle'), menu = document.getElementById('mobileMenu'), overlay = document.getElementById('menuOverlay'), closeBtn = document.getElementById('mobileClose');
+    function openMenu() { menu.classList.add('open'); overlay.classList.add('open'); toggle.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { menu.classList.remove('open'); overlay.classList.remove('open'); toggle.classList.remove('open'); document.body.style.overflow = ''; }
+    toggle?.addEventListener('click', () => menu.classList.contains('open') ? closeMenu() : openMenu());
+    closeBtn?.addEventListener('click', closeMenu);
+    overlay?.addEventListener('click', closeMenu);
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', closeMenu));
+    
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.timeline().to('.hero-eyebrow', { opacity:1, y:0, duration:.9 }, .3).to('.hero-title', { opacity:1, y:0, duration:1 }, .5).to('.hero-actions', { opacity:1, y:0, duration:.8 }, .95);
+    gsap.to('#heroStats', { opacity:1, y:0, duration:1, delay:1.2 });
+    gsap.utils.toArray('.reveal-up').forEach(el => gsap.to(el, { opacity:1, y:0, duration:.9, scrollTrigger:{ trigger:el, start:'top 88%' }}));
+    gsap.utils.toArray('.reveal-left').forEach(el => gsap.to(el, { opacity:1, x:0, duration:1, scrollTrigger:{ trigger:el, start:'top 85%' }}));
+    gsap.utils.toArray('.reveal-right').forEach(el=> gsap.to(el, { opacity:1, x:0, duration:1, scrollTrigger:{ trigger:el, start:'top 85%' }}));
+    gsap.utils.toArray('.step').forEach((step,i) => gsap.to(step, { opacity:1, x:0, duration:.75, delay:i*.12, scrollTrigger:{ trigger:'.process-steps', start:'top 80%' }}));
+    
+    function animateNumbers() {
+      document.querySelectorAll('.stat-counter').forEach(counter => {
+        const target = parseInt(counter.dataset.target);
+        let current = 0;
+        const step = target / 50;
+        (function tick() { current += step; if (current < target) { counter.textContent = Math.floor(current); requestAnimationFrame(tick); } else counter.textContent = target; })();
       });
     }
-    strip.addEventListener('scroll', () => {
-      if (window.innerWidth>768) return;
-      const idx = Math.round(strip.scrollLeft / (items[0].offsetWidth+16));
-      dw.querySelectorAll('.gallery-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
-    });
-    window.addEventListener('resize', build);
-    build();
-  })();
-
-  /* ── WORKING EMAIL FORM ── */
-  const contactForm = document.getElementById('contactForm');
-  const submitBtn = document.getElementById('submitBtn');
-
-  function handleFormSubmit(e) {
-    e.preventDefault();
+    new IntersectionObserver((entries) => { if (entries[0].isIntersecting) animateNumbers(); }, { threshold: 0.3 }).observe(document.getElementById('heroStats'));
     
-    const name = document.getElementById('fullName')?.value.trim() || '';
-    const phone = document.getElementById('phone')?.value.trim() || '';
-    const email = document.getElementById('email')?.value.trim() || '';
-    const postcode = document.getElementById('postcode')?.value.trim() || '';
-    const service = document.getElementById('service')?.value || '';
-    const message = document.getElementById('message')?.value.trim() || '';
-
-    if (!name) {
-      submitBtn.textContent = 'Please enter your name ✕';
-      submitBtn.style.background = '#e74c3c';
-      setTimeout(() => { submitBtn.textContent = 'Send Enquiry →'; submitBtn.style.background = ''; }, 3000);
-      return;
-    }
+    const scrollCont = document.getElementById('scrollContainer');
+    const revHoriz = document.getElementById('reviewsHorizontal');
+    const dotsWrap = document.getElementById('reviewsDots');
+    let rCards = [];
+    function initRDots() { if (!revHoriz) return; rCards = [...revHoriz.querySelectorAll('.review-card')]; dotsWrap.innerHTML = ''; rCards.forEach((_, i) => { const d = document.createElement('div'); d.className = 'dot'; if (i===0) d.classList.add('active'); d.addEventListener('click', () => { scrollCont.scrollTo({ left: i*(rCards[0].offsetWidth+32), behavior:'smooth' }); }); dotsWrap.appendChild(d); }); }
+    if (scrollCont) { initRDots(); scrollCont.addEventListener('scroll', () => { if (!rCards.length) return; const idx = Math.round(scrollCont.scrollLeft / (rCards[0].offsetWidth+32)); dotsWrap.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i===idx)); }); window.addEventListener('resize', initRDots); let isDown=false, startX, sl; scrollCont.addEventListener('mousedown', e => { isDown=true; scrollCont.style.cursor='grabbing'; startX=e.pageX-scrollCont.offsetLeft; sl=scrollCont.scrollLeft; }); scrollCont.addEventListener('mouseleave', () => { isDown=false; scrollCont.style.cursor='grab'; }); scrollCont.addEventListener('mouseup', () => { isDown=false; scrollCont.style.cursor='grab'; }); scrollCont.addEventListener('mousemove', e => { if(!isDown) return; e.preventDefault(); scrollCont.scrollLeft = sl-(e.pageX-scrollCont.offsetLeft-startX)*1.5; }); scrollCont.style.cursor='grab'; }
     
-    if (!email || !email.includes('@')) {
-      submitBtn.textContent = 'Please enter valid email ✕';
-      submitBtn.style.background = '#e74c3c';
-      setTimeout(() => { submitBtn.textContent = 'Send Enquiry →'; submitBtn.style.background = ''; }, 3000);
-      return;
-    }
-
-    if (!phone) {
-      submitBtn.textContent = 'Please enter phone number ✕';
-      submitBtn.style.background = '#e74c3c';
-      setTimeout(() => { submitBtn.textContent = 'Send Enquiry →'; submitBtn.style.background = ''; }, 3000);
-      return;
-    }
-
-    const to = 'info@kiwipools.co.uk';
-    const subject = `Pool Enquiry from ${name}`;
-    const body = `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nPostcode: ${postcode || 'Not provided'}\nService: ${service}\n\n--- Message ---\n${message || '(No message provided)'}\n\n---\nThis enquiry was sent from the Kiwi Pools UK website contact form.`;
-
-    const encodedSubject = encodeURIComponent(subject);
-    const encodedBody = encodeURIComponent(body);
+    const slider = document.getElementById('compSlider'); const handle = document.getElementById('compHandle'); if (slider) { const imgBefore = slider.querySelector('.img-before'); let active = false; function setPos(clientX) { const rect = slider.getBoundingClientRect(); let pct = Math.min(Math.max((clientX - rect.left) / rect.width, 0.02), 0.98); handle.style.left = (pct*100).toFixed(2)+'%'; imgBefore.style.clipPath = 'inset(0 '+((1-pct)*100).toFixed(2)+'% 0 0)'; } setTimeout(() => setPos(slider.getBoundingClientRect().left + slider.offsetWidth*0.5), 400); slider.addEventListener('mousedown', e => { active=true; setPos(e.clientX); e.preventDefault(); }); window.addEventListener('mousemove', e => { if(active) setPos(e.clientX); }); window.addEventListener('mouseup', () => { active=false; }); slider.addEventListener('touchstart', e => { active=true; setPos(e.touches[0].clientX); }, { passive: true }); slider.addEventListener('touchmove', e => { if (!active) return; e.preventDefault(); setPos(e.touches[0].clientX); }, { passive: false }); window.addEventListener('touchend', () => { active=false; }); }
     
-    const ua = navigator.userAgent.toLowerCase();
-    const isIOS = /iphone|ipad|ipod/.test(ua);
-    const isMac = /macintosh|mac os x/.test(ua) && !isIOS;
-    const isAndroid = /android/.test(ua);
+    const strip = document.getElementById('galleryStrip'); const dw = document.getElementById('galleryDots'); if (strip && dw) { const items = [...strip.querySelectorAll('.g-item')]; function build() { if (window.innerWidth > 768) { dw.innerHTML=''; return; } dw.innerHTML=''; items.forEach((_,i) => { const d = document.createElement('div'); d.className='gallery-dot'; if(i===0) d.classList.add('active'); d.addEventListener('click', () => strip.scrollTo({ left:i*(items[0].offsetWidth+16), behavior:'smooth' })); dw.appendChild(d); }); } strip.addEventListener('scroll', () => { if (window.innerWidth>768) return; const idx = Math.round(strip.scrollLeft / (items[0].offsetWidth+16)); dw.querySelectorAll('.gallery-dot').forEach((d,i) => d.classList.toggle('active', i===idx)); }); window.addEventListener('resize', build); build(); }
     
-    submitBtn.textContent = 'Opening email client...';
-    submitBtn.style.background = '#2ecc71';
+    // ---------- ADVANCED MAIL CLIENT DETECTION ----------
+    const contactForm = document.getElementById('contactForm');
+    const recipientEmail = 'info@kiwipools.co.uk';
     
-    if (isIOS || isMac) {
-      window.location.href = `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
-    } else if (isAndroid) {
-      const gmailIntent = `intent://send?to=${encodeURIComponent(to)}&subject=${encodedSubject}&body=${encodedBody}#Intent;scheme=mailto;package=com.google.android.gm;end`;
-      try {
-        window.location.href = gmailIntent;
-      } catch(e) {
-        window.location.href = `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
+    function getMailClientUrl(subject, body) {
+      const encodedSubject = encodeURIComponent(subject);
+      const encodedBody = encodeURIComponent(body);
+      const ua = navigator.userAgent.toLowerCase();
+      const isAndroid = /android/i.test(ua);
+      const isIOS = /iphone|ipad|ipod/i.test(ua);
+      const isMac = /macintosh|mac os x/i.test(ua) && !isIOS;
+      const isWindows = /windows|win32|win64/i.test(ua);
+      const isLinux = /linux/i.test(ua) && !isAndroid;
+      
+      // Android: try intent for Gmail app, fallback to web gmail
+      if (isAndroid) {
+        // Gmail app intent
+        return `intent://mailto/${recipientEmail}?subject=${encodedSubject}&body=${encodedBody}#Intent;scheme=mailto;package=com.google.android.gm;end`;
       }
-      setTimeout(() => {
-        window.location.href = `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
-      }, 500);
-    } else {
-      window.open(
-        `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodedSubject}&body=${encodedBody}`,
-        '_blank'
-      );
+      // iOS / iPadOS / Mac with Apple Mail detection — use mailto: which opens native Mail app
+      if (isIOS || (isMac && !/chrome|firefox/i.test(ua))) {
+        return `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedBody}`;
+      }
+      // Windows: try to open web Gmail (desktop prefers gmail)
+      if (isWindows || (isLinux && !isAndroid)) {
+        return `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}&su=${encodedSubject}&body=${encodedBody}`;
+      }
+      // Fallback for any other desktop: web Gmail
+      return `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}&su=${encodedSubject}&body=${encodedBody}`;
     }
     
-    setTimeout(() => {
-      submitBtn.textContent = 'Send Enquiry →';
-      submitBtn.style.background = '';
-      contactForm.reset();
-    }, 4000);
-  }
-
-  contactForm.addEventListener('submit', handleFormSubmit);
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const postcode = document.getElementById('postcode').value.trim();
+      const service = document.getElementById('service').value;
+      const messageText = document.getElementById('message').value.trim();
+      
+      if (!name || !phone || !email || !postcode) {
+        alert('Please fill in all required fields (Name, Phone, Email, Postcode).');
+        return;
+      }
+      
+      const subject = `Enquiry from ${name} - ${service}`;
+      const body = `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nPostcode: ${postcode}\nService Required: ${service}\n\nMessage:\n${messageText || '(No message provided)'}\n\n-- Sent via Kiwi Pools UK website contact form`;
+      
+      const url = getMailClientUrl(subject, body);
+      
+      // Give user visual feedback before opening mail client
+      const submitBtn = contactForm.querySelector('.form-submit');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = "Opening Email... ✓";
+      submitBtn.style.background = '#2ecc71';
+      
+      // Small delay for better UX
+      setTimeout(() => {
+        window.location.href = url;
+        // reset button after 2 seconds
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = '';
+        }, 2000);
+      }, 200);
+      
+      // optional: don't reset form immediately to allow user to see the success feel
+      // we keep data for convenience, but not clearing instantly
+    }
+    
+    contactForm.addEventListener('submit', handleFormSubmit);
+  })();
 </script>
 </body>
 </html>
